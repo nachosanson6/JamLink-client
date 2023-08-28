@@ -28,7 +28,7 @@ const Navigation = () => {
                 <NavDropdown title="Icono carita" id="basic-nav-dropdown">
                     <Link to={'/signup'} className='nav-link'> Crear Registro </Link>
                     <Link to={'/login'} className='nav-link'> Iniciar Sesión </Link>
-                    <span className='nav-link' onClick={logout}>Cerrar sesión</span>
+                    <Link className='nav-link' onClick={logout}>Cerrar sesión</Link>
                 </NavDropdown>
 
 
