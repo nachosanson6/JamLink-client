@@ -3,6 +3,9 @@ import { Container, Row, Col } from 'react-bootstrap'
 import { AuthContext } from '../../contexts/auth.context'
 import SpinnerComponent from '../../components/Spinner/Spinner'
 import userservice from '../../services/user.service'
+import microfono from './../../assets/images/instruments/karaoke.png'
+import './../../pages/ProfilePage/ProfilePage.css'
+import instrumentsUtil from '../../Utils/instruments.util'
 
 
 
@@ -10,7 +13,7 @@ const ProfilePage = () => {
 
     const { loggedUser } = useContext(AuthContext)
 
-    const { userInformation, setUserInformation } = useState(null)
+    const [userInformation, setUserInformation] = useState(null)
 
     useEffect(() => {
         loadUserDetails()
@@ -28,6 +31,7 @@ const ProfilePage = () => {
         );
     }
 
+
     return (
 
         <Container>
@@ -39,6 +43,11 @@ const ProfilePage = () => {
                     <hr />
                     <img src={userInformation.avatar} alt="" />
                     <h2>{userInformation.username}</h2>
+                    <h2>{userInformation.description}</h2>
+
+                    {
+                        userInformation.instruments.map(elm => instrumentsUtil(elm))
+                    }
 
 
 

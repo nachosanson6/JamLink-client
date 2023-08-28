@@ -9,7 +9,7 @@ class UserService {
     }
 
     getUserDetails(userId) {
-        return this.api.get(`/details/${userId}`)
+        return axios.get(`http://localhost:5005/api/user/details/${userId}`)
     }
 
 }
