@@ -15,7 +15,6 @@ const SignupForm = () => {
         instruments: [],
         description: ""
     })
-    console.log(signupData)
 
     const navigate = useNavigate()
 

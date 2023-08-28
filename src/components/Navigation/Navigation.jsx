@@ -6,7 +6,7 @@ import logoDark from './../../assets/images/logoDark.png'
 
 const Navigation = () => {
 
-    const { logout } = useContext(AuthContext)
+    const { logout, loggedUser } = useContext(AuthContext)
 
     return (
 
@@ -20,14 +20,21 @@ const Navigation = () => {
                 className="d-inline-block align-top"
             /></Link></Navbar.Brand>
 
-            <Nav className="me-auto"   >
+            <Nav className="me-auto">
 
                 <Link to={'/events'} className='nav-link'> Eventos </Link>
-                <Link to={'/user/community'} className='nav-link'> Comunidad </Link>
+
+                {
+                    loggedUser &&
+
+                    <Link to={'/user/community'} className='nav-link'> Comunidad </Link>
+
+                }
 
                 <NavDropdown title="Icono carita" id="basic-nav-dropdown">
                     <Link to={'/signup'} className='nav-link'> Crear Registro </Link>
                     <Link to={'/login'} className='nav-link'> Iniciar Sesión </Link>
+                    <Link to={'/user/profile'} className='nav-link'> Perfil de usuario </Link>
                     <Link className='nav-link' onClick={logout}>Cerrar sesión</Link>
                 </NavDropdown>
 
