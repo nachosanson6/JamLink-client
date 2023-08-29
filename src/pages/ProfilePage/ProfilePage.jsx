@@ -1,62 +1,24 @@
-import { useContext, useEffect, useState } from 'react'
-import { Container, Row, Col } from 'react-bootstrap'
-import { AuthContext } from '../../contexts/auth.context'
-import SpinnerComponent from '../../components/Spinner/Spinner'
-import userservice from '../../services/user.service'
-import microfono from './../../assets/images/instruments/karaoke.png'
+import { Container, Row } from 'react-bootstrap'
 import './../../pages/ProfilePage/ProfilePage.css'
-import instrumentsUtil from '../../Utils/instruments.util'
+import UserCard from '../../components/userCard/userCard'
 
 
 
 const ProfilePage = () => {
 
-    const { loggedUser } = useContext(AuthContext)
 
-    const [userInformation, setUserInformation] = useState(null)
-
-    useEffect(() => {
-        loadUserDetails()
-    }, [])
-
-    const loadUserDetails = () => {
-        userservice
-            .getUserDetails(loggedUser._id)
-            .then(({ data }) => setUserInformation(data))
-            .catch(err => console.log(err))
-    }
-    if (userInformation === null) {
-        return (
-            <SpinnerComponent />
-        );
-    }
 
 
     return (
 
         <Container>
-            <Row>
+            <Row className='row'>
 
-                <Col md={{ offset: 3, span: 6 }}>
-                    <h1>Perfil de usuario</h1>
-
-                    <hr />
-                    <img src={userInformation.avatar} alt="" />
-                    <h2>{userInformation.username}</h2>
-                    <h2>{userInformation.description}</h2>
-
-                    {
-                        userInformation.instruments.map(elm => instrumentsUtil(elm))
-                    }
-
-
-
-
-                </Col>
+                <UserCard />
 
             </Row>
 
-        </Container>
+        </Container >
     )
 }
 
