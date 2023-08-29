@@ -1,12 +1,25 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import authService from "./../../services/auth.services";
 import uploadServices from "../../services/upload.services";
 import { useNavigate } from "react-router-dom"
 import { getUpdatedInstruments } from "../../utils/instruments.util";
+import { AuthContext } from "../../contexts/auth.context";
+import userservice from "../../services/user.service";
+
 // import InstrumentsForm from "../InstrumentsForm/InstrumentsForm";
 
 const SignupForm = () => {
+
+    const { loggedUser } = useContext(AuthContext)
+
+    useEffect(() => {
+        if (loggedUser) {
+            userservice.getUserDetails(loggedUser._id)
+                .then(({ data }) => setSignupData(data))
+                .catch(err => console.log(err));
+        }
+    }, [loggedUser]);
 
     const [signupData, setSignupData] = useState({
         username: "",
@@ -16,6 +29,7 @@ const SignupForm = () => {
         instruments: [],
         description: ""
     })
+
 
     const navigate = useNavigate()
 
@@ -27,11 +41,23 @@ const SignupForm = () => {
     const handleFormSubmit = e => {
         e.preventDefault()
 
-        authService
-            .signup(signupData)
-            .then(() => navigate('/login'))
-            .catch(err => console.log(err))
+        {
+            !loggedUser &&
 
+                authService
+                    .signup(signupData)
+                    .then(() => navigate('/login'))
+                    .catch(err => console.log(err))
+        }
+
+        {
+            loggedUser &&
+
+                userservice
+                    .updateUser(loggedUser._id, signupData)
+                    .then(() => navigate('/user/profile'))
+                    .catch(err => console.log(err))
+        }
     }
 
     const handleInstrumentChange = (e) => {
@@ -67,12 +93,13 @@ const SignupForm = () => {
                 <Form.Control type="email" value={signupData.email} onChange={handleInputChange} name="email" />
 
             </Form.Group>
-
-            <Form.Group className="mb-3" controlId="password">
-                <Form.Label>Contraseña</Form.Label>
-                <Form.Control type="password" value={signupData.password} onChange={handleInputChange} name="password" />
-            </Form.Group>
-
+            {
+                !loggedUser &&
+                <Form.Group className="mb-3" controlId="password">
+                    <Form.Label>Contraseña</Form.Label>
+                    <Form.Control type="password" value={signupData.password} onChange={handleInputChange} name="password" />
+                </Form.Group>
+            }
             <Form.Group className="mb-3" controlId="image">
                 <Form.Label>Avatar</Form.Label>
                 <Form.Control type="file" onChange={handleFileUpload} />
@@ -175,6 +202,15 @@ const SignupForm = () => {
                             checked={signupData.instruments.includes('Violín')}
                             onChange={handleInstrumentChange}
                         />
+                        <Form.Check
+                            inline
+                            label="Trompeta"
+                            type={type}
+                            id={`inline-${type}-10`}
+                            value='Trompeta'
+                            checked={signupData.instruments.includes('Trompeta')}
+                            onChange={handleInstrumentChange}
+                        />
                     </div>
                 ))
             }
@@ -183,10 +219,18 @@ const SignupForm = () => {
                 <Form.Control type="text" value={signupData.description} onChange={handleInputChange} name="description" />
 
             </Form.Group>
-
-            <Button variant="primary" type="submit">
-                Resgistrase
-            </Button>
+            {
+                !loggedUser &&
+                <Button variant="primary" type="submit">
+                    Resgistrase
+                </Button>
+            }
+            {
+                loggedUser &&
+                <Button variant="primary" type="submit">
+                    Actualizar
+                </Button>
+            }
         </Form>
     )
 }

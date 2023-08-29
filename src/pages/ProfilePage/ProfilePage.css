@@ -10,10 +10,10 @@
 .userCard {
     border: 1px solid;
     padding: 2%;
-    margin-top: 25px;
-
 }
 
-.row {
-    margin-top: 300px;
+.userAvatar {
+    width: 30%;
+    border: 1px solid;
+    border-radius: 10%;
 }

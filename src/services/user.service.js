@@ -9,7 +9,13 @@ class UserService {
     }
 
     getUserDetails(userId) {
-        return axios.get(`http://localhost:5005/api/user/details/${userId}`)
+        return this.api.get(`/details/${userId}`)
+    }
+
+    updateUser(userId, userData) {
+
+        return this.api.put(`/edit/${userId}`, userData)
+
     }
 
 }
