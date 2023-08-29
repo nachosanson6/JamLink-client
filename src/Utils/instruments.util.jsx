@@ -30,20 +30,24 @@ export const getInstruments = (instruments) => {
         case "Guitarra":
             return <img className='instrumentsImg' src={guitarra} alt="" />
 
-        case "Pandereta":
+        case "Percusión":
             return <img className='instrumentsImg' src={pandereta} alt="" />
 
         case "Teclado":
             return <img className='instrumentsImg' src={teclado} alt="" />
 
-        case "Saxofon":
+        case "Saxofón":
             return <img className='instrumentsImg' src={saxofon} alt="" />
 
         case "Trompeta":
             return <img className='instrumentsImg' src={trompeta} alt="" />
 
-        case "Violin":
+        case "Violín":
             return <img className='instrumentsImg' src={violin} alt="" />
+
+        case "Trompeta":
+            return <img className='instrumentsImg' src={trompeta} alt="" />
+
 
     }
 
