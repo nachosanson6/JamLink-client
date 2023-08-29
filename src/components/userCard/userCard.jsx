@@ -1,5 +1,5 @@
 import { Col } from "react-bootstrap"
-import instrumentsUtil from "../../Utils/instruments.util"
+import { getInstruments } from "../../utils/instruments.util"
 import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "../../contexts/auth.context"
 import SpinnerComponent from "../Spinner/Spinner"
@@ -21,17 +21,17 @@ const UserCard = () => {
             .then(({ data }) => setUserInformation(data))
             .catch(err => console.log(err))
     }
-    if (userInformation === null) {
+
+    if (!userInformation) {
         return (
             <SpinnerComponent />
         );
     }
 
 
-
-
     return (
         <Col md={{ offset: 3, span: 6 }} className='userCard'>
+
             <h1>Perfil de {userInformation.username} </h1>
 
             <hr />
@@ -40,11 +40,8 @@ const UserCard = () => {
             <h2>{userInformation.description}</h2>
 
             {
-                userInformation.instruments.map(elm => instrumentsUtil(elm))
+                userInformation.instruments.map(elm => getInstruments(elm))
             }
-
-
-
 
         </Col>
 

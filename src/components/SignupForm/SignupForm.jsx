@@ -3,6 +3,7 @@ import { Form, Button } from "react-bootstrap";
 import authService from "./../../services/auth.services";
 import uploadServices from "../../services/upload.services";
 import { useNavigate } from "react-router-dom"
+import { getUpdatedInstruments } from "../../utils/instruments.util";
 // import InstrumentsForm from "../InstrumentsForm/InstrumentsForm";
 
 const SignupForm = () => {
@@ -34,22 +35,9 @@ const SignupForm = () => {
     }
 
     const handleInstrumentChange = (e) => {
-        const { checked, value } = e.target;
+        const { checked, value } = e.target
+        const updatedInstruments = getUpdatedInstruments(checked, value, signupData.instruments)
 
-        // Copia el array actual de instrumentos del estado
-        const updatedInstruments = [...signupData.instruments];
-
-        if (checked) {
-            // Si la casilla está marcada, agrega el instrumento al array
-            updatedInstruments.push(value);
-        } else {
-            // Si la casilla está desmarcada, quita el instrumento del array
-            const index = updatedInstruments.indexOf(value);
-            if (index !== -1) {
-                updatedInstruments.splice(index, 1);
-            }
-        }
-        // Actualiza el estado con el nuevo array de instrumentos
         setSignupData({ ...signupData, instruments: updatedInstruments });
     };
 
@@ -91,6 +79,8 @@ const SignupForm = () => {
             </Form.Group>
 
             {/* <InstrumentsForm /> */}
+
+            {/* TODO: DESACOPLAR CHECKBOXES */}
 
             {
                 ['checkbox'].map((type) => (
