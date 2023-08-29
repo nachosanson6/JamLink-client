@@ -10,44 +10,58 @@ import saxofon from './../assets/images/instruments/saxofon.png'
 import trompeta from './../assets/images/instruments/trompeta.png'
 import violin from './../assets/images/instruments/violin.png'
 
-const instrumentsUtil = (instruments) => {
+export const getInstruments = (instruments) => {
     switch (instruments) {
         case "Acordeón":
             return <img className='instrumentsImg' src={acordeon} alt="" />
-            break
+
         case "Bajo":
             return <img className='instrumentsImg' src={bajo} alt="" />
-            break
+
         case "Bateria":
             return <img className='instrumentsImg' src={bateria} alt="" />
-            break
+
         case "Guitarra eléctrica":
             return <img className='instrumentsImg' src={guitarraElectrica} alt="" />
-            break
+
         case "Cantante":
             return <img className='instrumentsImg' src={microfono} alt="" />
-            break
+
         case "Guitarra":
             return <img className='instrumentsImg' src={guitarra} alt="" />
-            break
+
         case "Pandereta":
             return <img className='instrumentsImg' src={pandereta} alt="" />
-            break
+
         case "Teclado":
             return <img className='instrumentsImg' src={teclado} alt="" />
-            break
+
         case "Saxofon":
             return <img className='instrumentsImg' src={saxofon} alt="" />
-            break
+
         case "Trompeta":
             return <img className='instrumentsImg' src={trompeta} alt="" />
-            break
+
         case "Violin":
             return <img className='instrumentsImg' src={violin} alt="" />
-            break
+
     }
 
 
 }
 
-export default instrumentsUtil
+export const getUpdatedInstruments = (checked, value, instruments) => {
+
+    const instrumentsCopy = [...instruments];
+
+    if (checked) {
+        instrumentsCopy.push(value);
+    } else {
+        const index = instrumentsCopy.indexOf(value);
+        if (index !== -1) {
+            instrumentsCopy.splice(index, 1);
+        }
+    }
+
+    return instrumentsCopy
+}

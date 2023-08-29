@@ -12,25 +12,22 @@ import UserEditionPage from '../pages/UserEditionPage/UserEditionPage'
 import PrivateRoute from './PrivateRoute'
 
 
-
 const AppRoutes = () => {
 
     return (
         <Routes>
-            <Route path={'/'} element={<HomePage />} ></Route>
-            <Route path={'/events'} element={<EventsPage />} ></Route>
-            <Route path={'/signup'} element={<SignupPage />} ></Route>
-            <Route path={'/login'} element={<LoginPage />} ></Route>
-
-
+            <Route path={'/'} element={<HomePage />} />
+            <Route path={'/events'} element={<EventsPage />} />
+            <Route path={'/signup'} element={<SignupPage />} />
+            <Route path={'/login'} element={<LoginPage />} />
 
             <Route element={<PrivateRoute />}>
-                <Route path={'/user/profile'} element={<ProfilePage />} ></Route>
-                <Route path={'/user/community'} element={<CommunityPage />} ></Route>
-                <Route path={'/user/edit/:id'} element={<UserEditionPage />} ></Route>
-                <Route path={'/event/create '} element={<EventsCreatePage />} ></Route>
-                <Route path={'/event/edit'} element={<EventsEditPage />} ></Route>
-                <Route path={'/events/details/:id'} element={<EventsDetailsPage />} ></Route>
+                <Route path={'/user/profile'} element={<ProfilePage />} />
+                <Route path={'/user/community'} element={<CommunityPage />} />
+                <Route path={'/user/edit/:id'} element={<UserEditionPage />} />
+                <Route path={'/event/create '} element={<EventsCreatePage />} />
+                <Route path={'/event/edit'} element={<EventsEditPage />} />
+                <Route path={'/events/details/:id'} element={<EventsDetailsPage />} />
             </Route>
         </Routes>
     )
