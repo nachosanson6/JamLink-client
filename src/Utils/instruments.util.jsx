@@ -47,9 +47,7 @@ const instrumentsUtil = (instruments) => {
             break
     }
 
-    return (
-        <h1>hola</h1>
-    )
+
 }
 
 export default instrumentsUtil

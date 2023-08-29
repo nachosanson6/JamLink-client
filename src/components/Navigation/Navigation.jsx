@@ -38,9 +38,23 @@ const Navigation = () => {
                 <Nav className='justify-content-end'>
 
                     <NavDropdown id="basic-nav-dropdown" className='userIcon'
-                    // title={<div className="userIcon"
-                    //     style={{ width: "50px", height: "50px", borderRadius: "50%" }}>
-                    // </div>}
+                        title={<div className="userIcon"
+                            style={{ width: "50px", height: "50px", borderRadius: "50%" }}>
+                            {
+
+                                loggedUser &&
+                                <img src={loggedUser.avatar}
+                                    alt='userIcon'
+                                    style={{ width: "100%", height: "100%", borderRadius: "50%" }} />
+                            }
+
+                            {
+                                !loggedUser &&
+                                <img src={iconProfile}
+                                    alt='userIcon'
+                                    style={{ width: "100%", height: "100%", borderRadius: "50%" }} />
+                            }
+                        </div>}
                     >
 
                         {
