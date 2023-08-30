@@ -5,7 +5,7 @@ const LoginPage = () => {
 
     return (
 
-        <Container>
+        <Container className='LoginPage' style={{ height: '100vh' }}>
 
             <Row>
 

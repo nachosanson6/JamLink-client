@@ -8,10 +8,12 @@ function ThemeProviderWrapper(props) {
 
     const switchTheme = () => setTheme(theme === 'dark' ? 'ligth' : 'dark')
 
-    const invertedTheme = theme === 'dark' ? 'ligth' : 'dark'
+    // const invertedTheme = theme === 'dark' ? 'ligth' : 'dark'  COMENTADO PARA PROBAR SIN EL INVERTED
 
     return (
-        <ThemeContext.Provider value={{ theme, invertedTheme, switchTheme }}>
+
+        // VOLVER A PONER invertedTheme EN VALUE
+        <ThemeContext.Provider value={{ theme, switchTheme }}>
             {props.children}
         </ThemeContext.Provider>
     )

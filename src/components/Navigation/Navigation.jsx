@@ -8,16 +8,24 @@ import { ThemeContext } from '../../contexts/theme.context'
 
 const Navigation = () => {
 
-    const { theme, switchTheme, invertedTheme } = useContext(ThemeContext)
+    // VOLVER A PONER invertedTheme EN LA CONST DE THEME Y switchTheme
+    const { theme, switchTheme } = useContext(ThemeContext)
     const { logout, loggedUser } = useContext(AuthContext)
 
     return (
 
 
-        <Navbar bg={invertedTheme} data-bs-theme={invertedTheme}>
+        // <Navbar bg={invertedTheme} data-bs-theme={invertedTheme}>
 
-            <Container>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar
+            bg={theme === 'dark' ? 'light' : 'dark'}
+            data-bs-theme={theme === 'dark' ? 'light' : 'dark'}
+            className=''
+            expand="lg"
+        >
+            {/* <Container> */}
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
                 <Navbar.Brand className='ms-10' ><Link to={'/'} className='nav-link'><img
                     alt=""
                     src={logoDark}
@@ -38,55 +46,53 @@ const Navigation = () => {
                     }
 
                 </Nav>
+                <div className='d-flex' style={{ marginRight: '30px' }}>
+                    <Button variant="outline-primary" onClick={switchTheme}>Tema {theme === 'dark' ? 'oscuro' : 'claro'}</Button>
+                </div>
 
-            </Container>
+                <div className='justify-content-end'>
+                    <NavDropdown className='userIcon'
+                        title={<div className="userIcon"
+                            style={{ width: "70px", height: "70px", borderRadius: "50%", marginRight: "100px", marginTop: "10px" }}>
+                            {
 
-            <div className='d-flex' style={{ marginRight: '30px' }}>
-                <Button variant="outline-primary" onClick={switchTheme}>Tema {theme === 'dark' ? 'claro' : 'oscuro'}</Button>
-            </div>
+                                loggedUser &&
+                                <img src={loggedUser.avatar}
+                                    alt='userIcon'
+                                    style={{ width: "100%", height: "100%", borderRadius: "50%" }} />
+                            }
 
-            <div className='justify-content-end'>
-                <NavDropdown className='userIcon'
-                    title={<div className="userIcon"
-                        style={{ width: "70px", height: "70px", borderRadius: "50%", marginRight: "100px", marginTop: "10px" }}>
-                        {
-
-                            loggedUser &&
-                            <img src={loggedUser.avatar}
-                                alt='userIcon'
-                                style={{ width: "100%", height: "100%", borderRadius: "50%" }} />
-                        }
+                            {
+                                !loggedUser &&
+                                <img src={iconProfile}
+                                    alt='iconProfile'
+                                    style={{ width: "100%", height: "100%", borderRadius: "50%" }} />
+                            }
+                        </div>}>
 
                         {
                             !loggedUser &&
-                            <img src={iconProfile}
-                                alt='iconProfile'
-                                style={{ width: "100%", height: "100%", borderRadius: "50%" }} />
+                            <>
+                                <Link to={'/signup'} className='nav-link'>Registro</Link>
+                                <hr />
+                                <Link to={'/login'} className='nav-link'>Iniciar Sesión</Link>
+                            </>
                         }
-                    </div>}>
 
-                    {
-                        !loggedUser &&
-                        <>
-                            <Link to={'/signup'} className='nav-link'>Registro</Link>
-                            <hr />
-                            <Link to={'/login'} className='nav-link'>Iniciar Sesión</Link>
-                        </>
-                    }
+                        {
+                            loggedUser &&
+                            <>
+                                <Link to={'/user/profile'} className='nav-link'>Mi perfil </Link>
+                                <hr />
+                                <Link className='nav-link' onClick={logout}>Cerrar sesión</Link>
+                            </>
+                        }
+                    </NavDropdown>
+                </div>
 
-
-                    {
-                        loggedUser &&
-                        <>
-                            <Link to={'/user/profile'} className='nav-link'>Mi perfil </Link>
-                            <hr />
-                            <Link className='nav-link' onClick={logout}>Cerrar sesión</Link>
-                        </>
-                    }
-                </NavDropdown>
-            </div>
-
-        </Navbar >
+            </Navbar.Collapse>
+            {/* </Container> */}
+        </Navbar>
     )
 }
 
