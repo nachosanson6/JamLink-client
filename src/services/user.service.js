@@ -17,6 +17,9 @@ class UserService {
         return this.api.put(`/edit/${userId}`, userData)
 
     }
+    deleteUser(userId) {
+        return this.api.delete(`/delete/${userId}`)
+    }
 
 }
 
