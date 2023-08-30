@@ -206,7 +206,7 @@ const SignupForm = () => {
                             inline
                             label="Trompeta"
                             type={type}
-                            id={`inline-${type}-10`}
+                            id={`inline-${type}-11`}
                             value='Trompeta'
                             checked={signupData.instruments.includes('Trompeta')}
                             onChange={handleInstrumentChange}
