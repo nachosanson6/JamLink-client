@@ -12,6 +12,10 @@ class UserService {
         return this.api.get(`/details/${userId}`)
     }
 
+    getUsers(userId) {
+        return this.api(`/getAllUsers/${userId}`)
+    }
+
     updateUser(userId, userData) {
 
         return this.api.put(`/edit/${userId}`, userData)
