@@ -5,6 +5,9 @@ import { AuthContext } from '../../contexts/auth.context'
 import logoDark from './../../assets/images/logoDark.png'
 import iconProfile from './../../assets/images/iconProfile.png'
 import { ThemeContext } from '../../contexts/theme.context'
+import { Modal } from 'react-bootstrap'
+import LoginForm from '../../components/LoginForm/LoginForm'
+import { useState } from 'react'
 
 const Navigation = () => {
 
@@ -12,10 +15,13 @@ const Navigation = () => {
     const { theme, switchTheme } = useContext(ThemeContext)
     const { logout, loggedUser } = useContext(AuthContext)
 
+    const [showModal, setShowModal] = useState(false)
+
+
     return (
-
-
-        // <Navbar bg={invertedTheme} data-bs-theme={invertedTheme}>
+        <>
+        
+        {/* // <Navbar bg={invertedTheme} data-bs-theme={invertedTheme}> */}
 
         <Navbar
             bg={theme === 'dark' ? 'light' : 'dark'}
@@ -69,7 +75,10 @@ const Navigation = () => {
                             <>
                                 <Link to={'/signup'} className='nav-link'>Registro</Link>
                                 <hr />
-                                <Link to={'/login'} className='nav-link'>Iniciar Sesión</Link>
+                                {/* <Link to={'/login'} className='nav-link'>Iniciar Sesión</Link> */}
+                                <Button variant='dark' onClick={()=> setShowModal(true)}>Iniciar Sesión
+                                </Button>
+                                
                             </>
                         }
 
@@ -87,6 +96,18 @@ const Navigation = () => {
             </Navbar.Collapse>
             {/* </Container> */}
         </Navbar>
+
+
+ <Modal show={showModal} onHide={() => setShowModal(false)}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Acceso</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <LoginForm setShowModal={setShowModal}/>
+                </Modal.Body>
+            </Modal>
+</>
+    
     )
 }
 
