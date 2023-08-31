@@ -16,8 +16,13 @@ const UserCard = ({ _id, username, avatar, instruments }) => {
 
         userservice
             .updateFriend(loggedUser._id, { _id })
+    }
 
+    const handleDeleteFriend = e => {
+        e.preventDefault()
 
+        userservice
+            .deleteFriend(loggedUser._id, { _id })
     }
 
     return (
@@ -35,7 +40,7 @@ const UserCard = ({ _id, username, avatar, instruments }) => {
                     <Form onSubmit={handleAddFriend}>
                         <Button variant="outline-success" type='submit'>Añadir como amigo</Button>{' '}
                     </Form>
-                    <Form /*onSubmit={handleDeleteFriend}*/>
+                    <Form onSubmit={handleDeleteFriend}>
                         <Button variant="outline-danger" type='submit'>Eliminar amigo</Button>{' '}
                     </Form>
                 </Card.Body>

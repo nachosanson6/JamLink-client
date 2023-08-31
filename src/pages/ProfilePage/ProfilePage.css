@@ -17,3 +17,11 @@
     border: 1px solid;
     border-radius: 10%;
 }
+
+.friendAvatar {
+    border: 1px solid;
+    border-radius: 20%;
+    width: 100px;
+    padding: 5px;
+    margin-right: 5px;
+}

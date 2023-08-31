@@ -1,6 +1,7 @@
 import { Col, Button, Form } from "react-bootstrap"
 import { getInstruments } from "../../utils/instruments.util"
 import { Link } from "react-router-dom"
+import FriendsAvatar from "../FriendsAvatar/FriendsAvatar.util"
 
 
 
@@ -16,6 +17,7 @@ const UserDetails = ({ userInformation }) => {
             .then(() => useNavigate('/'))
             .catch(err => console.log(err))
     }
+
 
     return (
         <Col md={{ offset: 3, span: 6 }} className='userCard'>
@@ -35,6 +37,11 @@ const UserDetails = ({ userInformation }) => {
             }
             <h2>Amigos:</h2>
 
+            {
+                userInformation.friends.map(elm => <FriendsAvatar friendId={elm} />)
+            }
+
+            <hr />
             <Link to={`/user/edit/${userInformation.id}`}>
                 <Button variant="outline-success">Editar</Button>{' '}
             </Link>

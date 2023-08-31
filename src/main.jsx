@@ -13,9 +13,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <Router>
     <AuthProviderWrapper>
       <ThemeProviderWrapper>
-        <React.StrictMode>
-          <App />
-        </React.StrictMode>
+        {/* <React.StrictMode> */}
+        <App />
+        {/* </React.StrictMode> */}
       </ThemeProviderWrapper>
     </AuthProviderWrapper>
   </Router>

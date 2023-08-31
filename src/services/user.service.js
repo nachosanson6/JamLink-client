@@ -16,6 +16,10 @@ class UserService {
         return this.api(`/getAllUsers/${userId}`)
     }
 
+    getFriendAvatar(friendId) {
+        return this.api.get(`/getFriendAvatar/${friendId}`)
+    }
+
     updateUser(userId, userData) {
 
         return this.api.put(`/edit/${userId}`, userData)
@@ -23,6 +27,11 @@ class UserService {
     }
     updateFriend(userId, friendId) {
         return this.api.put(`/newFriend/${userId}`, friendId)
+
+    }
+    deleteFriend(userId, friendId) {
+
+        return this.api.put(`/deleteFriend/${userId}`, friendId)
 
     }
     deleteUser(userId) {
