@@ -2,20 +2,24 @@ import { Card, Button, Col, Form } from "react-bootstrap"
 import { getInstruments } from "../../utils/instruments.util"
 import './../UserCard/UserCard.css'
 import { Link } from "react-router-dom"
-import { useContext, useState } from "react"
+import { useContext, useState, useEffect } from "react"
 import userservice from "../../services/user.service"
 import { AuthContext } from "../../contexts/auth.context";
 
 
-const UserCard = ({ _id, username, avatar, instruments }) => {
+const UserCard = ({ _id, username, avatar, instruments, loadUsers }) => {
+
+    console.log('------------', loadUsers)
 
     const { loggedUser } = useContext(AuthContext)
+    const [isFriend, setIsFriend] = useState(false)
 
     const handleAddFriend = e => {
         e.preventDefault()
 
         userservice
             .updateFriend(loggedUser._id, { _id })
+            .then(() => loadUsers())
     }
 
     const handleDeleteFriend = e => {
@@ -23,7 +27,22 @@ const UserCard = ({ _id, username, avatar, instruments }) => {
 
         userservice
             .deleteFriend(loggedUser._id, { _id })
+            .then(() => loadUsers())
     }
+
+    useEffect(() => {
+        userservice
+            .getUserDetails(loggedUser._id)
+            .then(({ data }) => {
+                if (data.friends.includes(_id)) {
+                    setIsFriend(true)
+                } else {
+                    setIsFriend(false)
+                }
+
+            })
+            .catch(err => console.log(err))
+    })
 
     return (
         <Col lg={{ span: 3 }} md={{ span: 6 }}>
@@ -37,15 +56,21 @@ const UserCard = ({ _id, username, avatar, instruments }) => {
                         }
                     </Card.Text>
                     <Link className="btn btn-outline-dark" to={`/user/profile/${_id}`}>Detalles</Link>
-                    <Form onSubmit={handleAddFriend}>
-                        <Button variant="outline-success" type='submit'>Añadir como amigo</Button>{' '}
-                    </Form>
-                    <Form onSubmit={handleDeleteFriend}>
-                        <Button variant="outline-danger" type='submit'>Eliminar amigo</Button>{' '}
-                    </Form>
+                    {isFriend ?
+                        <Form onSubmit={handleDeleteFriend}>
+
+                            <Button variant="outline-danger" type='submit'>Eliminar amigo</Button>{' '}
+
+                        </Form>
+                        :
+                        <Form onSubmit={handleAddFriend}>
+
+                            <Button variant="outline-success" type='submit'>Añadir como amigo</Button>{' '}
+
+                        </Form>}
                 </Card.Body>
             </Card>
-        </Col>
+        </Col >
     )
 }
 

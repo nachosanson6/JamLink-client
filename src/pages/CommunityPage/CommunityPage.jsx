@@ -22,7 +22,6 @@ const CommunityPage = () => {
             .catch(err => console.log(err))
     }
 
-
     if (!users) {
         return (
             <SpinnerComponent />
@@ -31,7 +30,7 @@ const CommunityPage = () => {
     return (
 
         <Container>
-            <UserList users={users} />
+            <UserList users={users} loadUsers={loadUsers} />
         </Container>
     )
 }

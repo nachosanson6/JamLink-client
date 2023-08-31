@@ -2,7 +2,8 @@ import { Row } from "react-bootstrap"
 import SpinnerComponent from "../Spinner/Spinner"
 import UserCard from './../../components/UserCard/UserCard'
 
-const UserList = ({ users }) => {
+const UserList = ({ users, loadUsers }) => {
+
 
     return (
         !users ?
@@ -11,7 +12,7 @@ const UserList = ({ users }) => {
 
             <Row className="mt-5">
                 {
-                    users.map(elm => <UserCard {...elm} />)
+                    users.map(elm => <UserCard {...elm} loadUsers={loadUsers} />)
                 }
             </Row>
 
