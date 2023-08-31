@@ -4,6 +4,7 @@ import userservice from "../../services/user.service"
 import { AuthContext } from './../../contexts/auth.context'
 import SpinnerComponent from "../../components/Spinner/Spinner"
 import UserList from './../../components/UserList/UserList'
+
 const CommunityPage = () => {
 
     const { loggedUser } = useContext(AuthContext)
@@ -20,7 +21,7 @@ const CommunityPage = () => {
             .then(({ data }) => setUsers(data))
             .catch(err => console.log(err))
     }
-    console.log('---', users)
+
 
     if (!users) {
         return (

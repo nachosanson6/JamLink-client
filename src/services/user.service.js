@@ -21,8 +21,13 @@ class UserService {
         return this.api.put(`/edit/${userId}`, userData)
 
     }
+    updateFriend(userId, friendId) {
+        return this.api.put(`/newFriend/${userId}`, friendId)
+
+    }
     deleteUser(userId) {
         return this.api.delete(`/delete/${userId}`)
+
     }
 
 }

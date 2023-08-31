@@ -22,7 +22,7 @@ const AppRoutes = () => {
             <Route path={'/login'} element={<LoginPage />} />
 
             <Route element={<PrivateRoute />}>
-                <Route path={'/user/profile'} element={<ProfilePage />} />
+                <Route path={'/user/profile/:user_id'} element={<ProfilePage />} />
                 <Route path={'/user/community'} element={<CommunityPage />} />
                 <Route path={'/user/edit/:user_id'} element={<UserEditionPage />} />
                 <Route path={'/event/create '} element={<EventsCreatePage />} />

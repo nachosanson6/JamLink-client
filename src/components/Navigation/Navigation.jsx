@@ -22,11 +22,12 @@ const Navigation = () => {
             data-bs-theme={theme === 'dark' ? 'light' : 'dark'}
             className=''
             expand="lg"
+            style={{ padding: 0 }}
         >
             {/* <Container> */}
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
-                <Navbar.Brand className='ms-10' ><Link to={'/'} className='nav-link'><img
+                <Navbar.Brand className='ms-10' style={{ padding: 0 }} ><Link to={'/'} className='nav-link'><img
                     alt=""
                     src={logoDark}
                     width="100"
@@ -34,7 +35,7 @@ const Navigation = () => {
                     className="d-inline-block align-top"
                 /></Link></Navbar.Brand>
 
-                <Nav className="me-auto">
+                <Nav className="me-auto" >
 
                     <Link to={'/events'} className='nav-link'> Eventos </Link>
 
@@ -82,7 +83,7 @@ const Navigation = () => {
                         {
                             loggedUser &&
                             <>
-                                <Link to={'/user/profile'} className='nav-link'>Mi perfil </Link>
+                                <Link to={`/user/profile/${loggedUser._id}`} className='nav-link'>Mi perfil </Link>
                                 <hr />
                                 <Link className='nav-link' onClick={logout}>Cerrar sesión</Link>
                             </>
