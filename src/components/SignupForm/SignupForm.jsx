@@ -55,7 +55,7 @@ const SignupForm = () => {
 
                 userservice
                     .updateUser(loggedUser._id, signupData)
-                    .then(() => navigate('/user/profile'))
+                    .then(() => navigate(`/user/profile/${signupData._id}`))
                     .catch(err => console.log(err))
         }
     }

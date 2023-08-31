@@ -11,12 +11,9 @@ import UserDetails from './../../components/UserDetails/UserDetails'
 
 const ProfilePage = () => {
     const { user_id } = useParams()
-    console.log('2222', user_id)
     const [userInformation, setUserInformation] = useState(null)
 
-    useEffect(() => {
-        loadUserDetails()
-    }, [user_id])
+
 
     const loadUserDetails = () => {
         userservice
@@ -24,6 +21,10 @@ const ProfilePage = () => {
             .then(({ data }) => setUserInformation(data))
             .catch(err => console.log(err))
     }
+
+    useEffect(() => {
+        loadUserDetails()
+    }, [user_id])
 
     if (!userInformation) {
         return (
@@ -45,6 +46,7 @@ const ProfilePage = () => {
         <Container>
             <Row className='row'>
                 {/* TODO: ACOPLAR USERDETAILS */}
+
                 <UserDetails userInformation={userInformation} />
             </Row>
         </Container >
