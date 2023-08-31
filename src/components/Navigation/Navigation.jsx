@@ -36,12 +36,12 @@ const Navigation = () => {
 
                 <Nav className="me-auto">
 
-                    <Link to={'/events'} className='nav-link'> Eventos </Link>
+                    <Link to={'/events'} className='nav-link'>Eventos</Link>
 
                     {
                         loggedUser &&
 
-                        <Link to={'/user/community'} className='nav-link'> Comunidad </Link>
+                        <Link to={'/user/community'} className='nav-link'>Comunidad</Link>
 
                     }
 
@@ -54,20 +54,13 @@ const Navigation = () => {
                     <NavDropdown className='userIcon'
                         title={<div className="userIcon"
                             style={{ width: "70px", height: "70px", borderRadius: "50%", marginRight: "100px", marginTop: "10px" }}>
-                            {
 
-                                loggedUser &&
-                                <img src={loggedUser.avatar}
-                                    alt='userIcon'
-                                    style={{ width: "100%", height: "100%", borderRadius: "50%" }} />
-                            }
+                            <div
+                                alt='iconProfile'
+                                style={{
+                                        width: "100%", height: "100%", borderRadius: "50%", backgroundImage: `url(${loggedUser ? loggedUser.avatar : iconProfile})`, backgroundPosition: "center", backgroundRepeat: "no-repeat", backgroundSize: "cover"
+                                }} />
 
-                            {
-                                !loggedUser &&
-                                <img src={iconProfile}
-                                    alt='iconProfile'
-                                    style={{ width: "100%", height: "100%", borderRadius: "50%" }} />
-                            }
                         </div>}>
 
                         {
