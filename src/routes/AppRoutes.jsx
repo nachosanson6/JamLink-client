@@ -25,7 +25,7 @@ const AppRoutes = () => {
                 <Route path={'/user/profile/:user_id'} element={<ProfilePage />} />
                 <Route path={'/user/community'} element={<CommunityPage />} />
                 <Route path={'/user/edit/:user_id'} element={<UserEditionPage />} />
-                <Route path={'/event/create '} element={<EventsCreatePage />} />
+                <Route path={'/event/create'} element={<EventsCreatePage />} />
                 <Route path={'/event/edit'} element={<EventsEditPage />} />
                 <Route path={'/events/details/:id'} element={<EventsDetailsPage />} />
             </Route>

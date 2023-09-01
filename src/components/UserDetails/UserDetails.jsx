@@ -1,20 +1,22 @@
 import { Col, Button, Form } from "react-bootstrap"
 import { getInstruments } from "../../utils/instruments.util"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import FriendsAvatar from "../FriendsAvatar/FriendsAvatar.util"
-
-
-
+import userservice from "../../services/user.service"
+import { useContext } from "react"
+import { AuthContext } from "../../contexts/auth.context"
 
 
 const UserDetails = ({ userInformation }) => {
+
+    const { loggedUser, logout } = useContext(AuthContext)
 
     const handleFormSubmit = e => {
         e.preventDefault()
 
         userservice
             .deleteUser(loggedUser._id)
-            .then(() => useNavigate('/'))
+            .then(() => logout())
             .catch(err => console.log(err))
     }
 
