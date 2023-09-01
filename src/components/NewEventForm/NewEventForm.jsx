@@ -3,7 +3,7 @@ import { Form, Button, } from "react-bootstrap"
 import { AuthContext } from "../../contexts/auth.context";
 import { useNavigate } from "react-router-dom";
 import eventsservice from "../../services/events.services";
-
+import Autocomplete from "react-google-autocomplete";
 
 
 
@@ -62,6 +62,12 @@ const NewEventForm = () => {
                 <Form.Label>Dirección</Form.Label>
                 <Form.Control type="date" value={eventData.date} onChange={handleInputChange} name="date" />
             </Form.Group>
+
+            <Autocomplete
+                onPlaceSelected={(place, inputRef, autocomplete) => {
+                    console.log(autocomplete);
+                }}
+            />
 
             <Button variant="outline-info" type="submit">
                 Crear evento
