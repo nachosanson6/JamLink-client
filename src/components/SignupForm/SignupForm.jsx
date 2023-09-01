@@ -46,7 +46,7 @@ const SignupForm = () => {
 
                 authService
                     .signup(signupData)
-                    .then(() => navigate('/login'))
+                    .then(() => navigate('/'))
                     .catch(err => console.log(err))
         }
 

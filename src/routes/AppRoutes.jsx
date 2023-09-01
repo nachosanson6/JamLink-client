@@ -5,7 +5,6 @@ import EventsDetailsPage from '../pages/EventsDetailsPage/EventsDetailsPage'
 import EventsCreatePage from '../pages/EventsCreatePage/EventsCreatePage'
 import EventsEditPage from '../pages/EventsEditPage/EventsEditPage'
 import SignupPage from '../pages/SignupPage/SignupPage'
-import LoginPage from '../pages/LoginPage/LoginPage'
 import ProfilePage from '../pages/ProfilePage/ProfilePage'
 import CommunityPage from '../pages/CommunityPage/CommunityPage'
 import UserEditionPage from '../pages/UserEditionPage/UserEditionPage'
@@ -19,7 +18,7 @@ const AppRoutes = () => {
             <Route path={'/'} element={<HomePage />} />
             <Route path={'/events'} element={<EventsPage />} />
             <Route path={'/signup'} element={<SignupPage />} />
-            <Route path={'/login'} element={<LoginPage />} />
+
 
             <Route element={<PrivateRoute />}>
                 <Route path={'/user/profile/:user_id'} element={<ProfilePage />} />
