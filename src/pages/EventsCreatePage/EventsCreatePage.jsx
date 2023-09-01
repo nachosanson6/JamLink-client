@@ -1,11 +1,25 @@
-import { Container } from 'react-bootstrap'
+import { Container, Row, Col } from 'react-bootstrap'
+import NewEventForm from '../../components/NewEventForm/NewEventForm'
 
 const EventsCreatePage = () => {
 
     return (
 
         <Container>
-            <h1>Events Create Page</h1>
+
+            <Row>
+
+                <Col md={{ offset: 3, span: 6 }}>
+                    <h1>Nuevo evento</h1>
+
+                    <hr />
+
+                    <NewEventForm />
+
+                </Col>
+
+            </Row>
+
         </Container>
     )
 }
