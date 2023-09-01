@@ -17,6 +17,9 @@ class EventsService {
         return this.api.get('/getAllEvents')
     }
 
+    getEventsDetails(event_id) {
+        return this.api.get(`/details/${event_id}`)
+    }
 }
 
 const eventsservice = new EventsService()
