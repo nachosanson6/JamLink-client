@@ -7,8 +7,6 @@ import userservice from "../../services/user.service";
 import { AuthContext } from "../../contexts/auth.context";
 
 const UserCard = ({ _id, username, avatar, instruments, loadUsers }) => {
-  console.log("------------", loadUsers);
-
   const { loggedUser } = useContext(AuthContext);
   const [isFriend, setIsFriend] = useState(false);
 

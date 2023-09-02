@@ -3,7 +3,11 @@ import { Form, Button, } from "react-bootstrap"
 import { AuthContext } from "../../contexts/auth.context";
 import { useNavigate } from "react-router-dom";
 import eventsservice from "../../services/events.services";
-import Autocomplete from "react-google-autocomplete";
+import MyComponent from "../GoogleMap/GoogleMap";
+
+
+
+
 
 
 
@@ -17,8 +21,6 @@ const NewEventForm = () => {
         address: "",
         date: "",
         organizer: loggedUser._id
-
-
     })
 
     const navigate = useNavigate()
@@ -31,13 +33,10 @@ const NewEventForm = () => {
     const handleFormSubmit = e => {
         e.preventDefault()
 
-        {
-            eventsservice
-                .createEvent(eventData)
-                .then(() => navigate('/events'))
-                .catch(err => console.log(err))
-
-        }
+        eventsservice
+            .createEvent(eventData)
+            .then(() => navigate('/events'))
+            .catch(err => console.log(err))
     }
 
     return (
@@ -55,21 +54,18 @@ const NewEventForm = () => {
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Dirección</Form.Label>
+
                 <Form.Control type="text" value={eventData.address} onChange={handleInputChange} name="address" />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Dirección</Form.Label>
+                <Form.Label>Fecha</Form.Label>
                 <Form.Control type="date" value={eventData.date} onChange={handleInputChange} name="date" />
             </Form.Group>
 
-            <Autocomplete
-                onPlaceSelected={(place, inputRef, autocomplete) => {
-                    console.log(autocomplete);
-                }}
-            />
+            <MyComponent />
 
-            <Button variant="outline-info" type="submit">
+            <Button variant="outline-info" className="mt-3 ms-5" type="submit">
                 Crear evento
             </Button>
         </Form>

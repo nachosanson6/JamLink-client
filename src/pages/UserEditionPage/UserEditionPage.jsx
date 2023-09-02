@@ -6,16 +6,9 @@ import { AuthContext } from "../../contexts/auth.context"
 import { useContext, useState } from "react"
 
 
-
 const UserEditionPage = () => {
 
     const { loggedUser } = useContext(AuthContext)
-
-
-
-
-
-
 
     return (
 
