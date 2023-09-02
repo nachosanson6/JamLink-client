@@ -14,3 +14,5 @@ const EventCard = ({ title, description, date, organizer }) => {
     </Card>
   );
 };
+
+export default EventCard;
