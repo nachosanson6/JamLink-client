@@ -15,7 +15,8 @@ const SignupForm = () => {
 
     useEffect(() => {
         if (loggedUser) {
-            userservice.getUserDetails(loggedUser._id)
+            userservice
+                .getUserDetails(loggedUser._id)
                 .then(({ data }) => setSignupData(data))
                 .catch(err => console.log(err));
         }
@@ -41,6 +42,13 @@ const SignupForm = () => {
     const handleFormSubmit = e => {
         e.preventDefault()
 
+        // const action = loggedUser ? userservice.updateUser(loggedUser._id, signupData) : authService.signup(signupData)
+        // const path = loggedUser ? `/user/profile/${signupData._id}` : '/'
+
+        // action
+        //     .then(() => navigate(path))
+        //     .catch(err => console.log(err))
+
         {
             !loggedUser &&
 
@@ -62,9 +70,9 @@ const SignupForm = () => {
 
     const handleInstrumentChange = (e) => {
         const { checked, value } = e.target
-        const updatedInstruments = getUpdatedInstruments(checked, value, signupData.instruments)
+        const instruments = getUpdatedInstruments(checked, value, signupData.instruments)
 
-        setSignupData({ ...signupData, instruments: updatedInstruments });
+        setSignupData({ ...signupData, instruments });
     };
 
     const handleFileUpload = (e) => {
@@ -73,8 +81,8 @@ const SignupForm = () => {
 
         uploadServices
             .uploadimage(formData)
-            .then(res => {
-                setSignupData({ ...signupData, avatar: res.data.cloudinary_url })
+            .then(({ data }) => {
+                setSignupData({ ...signupData, avatar: data.cloudinary_url })
             })
             .catch(err => console.log(err))
     }

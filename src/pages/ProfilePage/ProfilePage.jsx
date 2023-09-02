@@ -8,12 +8,10 @@ import { useNavigate, useParams } from "react-router-dom"
 import UserDetails from './../../components/UserDetails/UserDetails'
 
 
-
 const ProfilePage = () => {
+
     const { user_id } = useParams()
     const [userInformation, setUserInformation] = useState(null)
-
-
 
     const loadUserDetails = () => {
         userservice
@@ -31,7 +29,9 @@ const ProfilePage = () => {
             <SpinnerComponent />
         );
     }
+
     const handleFormSubmit = e => {
+
         e.preventDefault()
 
         userservice

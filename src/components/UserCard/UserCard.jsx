@@ -20,6 +20,7 @@ const UserCard = ({ _id, username, avatar, instruments, loadUsers }) => {
         userservice
             .updateFriend(loggedUser._id, { _id })
             .then(() => loadUsers())
+            .catch(err => console.log(err))
     }
 
     const handleDeleteFriend = e => {
@@ -28,6 +29,7 @@ const UserCard = ({ _id, username, avatar, instruments, loadUsers }) => {
         userservice
             .deleteFriend(loggedUser._id, { _id })
             .then(() => loadUsers())
+            .catch(err => console.log(err))
     }
 
     useEffect(() => {
