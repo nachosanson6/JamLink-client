@@ -13,7 +13,8 @@ const UserCard = ({ _id, username, avatar, instruments, loadUsers }) => {
   const handleAddFriend = (e) => {
     e.preventDefault();
 
-    userservice.updateFriend(loggedUser._id, { _id }).then(() => loadUsers());
+    userservice
+      .updateFriend(loggedUser._id, { _id }).then(() => loadUsers());
   };
 
   const handleDeleteFriend = (e) => {

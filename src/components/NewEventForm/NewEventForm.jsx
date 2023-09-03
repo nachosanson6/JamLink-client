@@ -4,12 +4,7 @@ import { AuthContext } from "../../contexts/auth.context";
 import { useNavigate } from "react-router-dom";
 import eventsservice from "../../services/events.services";
 import MyComponent from "../GoogleMap/GoogleMap";
-
-
-
-
-
-
+import Component from "../GoogleAutoComplete/GoogleAutoComplete";
 
 const NewEventForm = () => {
 
@@ -63,7 +58,9 @@ const NewEventForm = () => {
                 <Form.Control type="date" value={eventData.date} onChange={handleInputChange} name="date" />
             </Form.Group>
 
-            <MyComponent />
+            <Component />
+
+            {/* <MyComponent /> */}
 
             <Button variant="outline-info" className="mt-3 ms-5" type="submit">
                 Crear evento

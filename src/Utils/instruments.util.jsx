@@ -45,10 +45,6 @@ export const getInstruments = (instruments) => {
         case "Violín":
             return <img className='instrumentsImg' src={violin} alt="" />
 
-        case "Trompeta":
-            return <img className='instrumentsImg' src={trompeta} alt="" />
-
-
     }
 
 
