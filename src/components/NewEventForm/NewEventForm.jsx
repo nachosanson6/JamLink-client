@@ -7,10 +7,6 @@ import MyComponent from "../GoogleMap/GoogleMap";
 
 
 
-
-
-
-
 const NewEventForm = () => {
 
     const { loggedUser } = useContext(AuthContext)

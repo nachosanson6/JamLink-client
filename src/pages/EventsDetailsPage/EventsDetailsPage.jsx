@@ -1,34 +1,36 @@
-import { Container, Card } from "react-bootstrap";
-import { useParams } from "react-router-dom";
-import eventsservice from "../../services/events.services";
-import { useEffect, useState } from "react";
-import SpinnerComponent from "../../components/Spinner/Spinner";
-import SalaelSol from "../../assets/images/SalaelSol.png";
+import { Container, Card } from "react-bootstrap"
+import { useParams } from "react-router-dom"
+import eventsservice from "../../services/events.services"
+import { useEffect, useState } from "react"
+import SpinnerComponent from "../../components/Spinner/Spinner"
+import SalaelSol from "../../assets/images/SalaelSol.png"
+import MyComponent from "../../components/GoogleMap/GoogleMap"
 
 const EventsDetailsPage = () => {
-  const { event_id } = useParams();
-  const [eventInformation, setEventInformation] = useState(null);
+  const { event_id } = useParams()
+  const [eventInformation, setEventInformation] = useState(null)
 
   const loadEventDetails = () => {
     eventsservice
       .getEventsDetails(event_id)
       .then(({ data }) => setEventInformation(data))
-      .catch((err) => console.log(err));
-  };
+      .catch((err) => console.log(err))
+  }
 
   useEffect(() => {
-    loadEventDetails();
-  }, [event_id]);
+    loadEventDetails()
+  }, [event_id])
 
   if (!eventInformation) {
-    return <SpinnerComponent />;
+    return <SpinnerComponent />
   }
 
   return (
-    <Container
-      className="d-flex align-items-center justify-content-center"
-      style={{ Height: "100vh" }}
-    >
+
+    <>
+
+    <Container className="d-flex align-items-center justify-content-center" style={{ height: "100vh" }}>
+
       <Card style={{ border: "2px solid black" }}>
         <Card.Img variant="top" src={SalaelSol} />
         <Card.Body>
@@ -40,8 +42,13 @@ const EventsDetailsPage = () => {
           </Card.Text>
         </Card.Body>
       </Card>
+      <div style={{marginLeft: "30px", border: "2px solid black"}}>
+          <MyComponent />
+      </div> 
     </Container>
-  );
-};
 
-export default EventsDetailsPage;
+    </>
+  )
+}
+
+export default EventsDetailsPage
