@@ -1,38 +1,29 @@
-import { usePlacesService } from "react-google-autocomplete/lib/usePlacesAutocompleteService";
+import React, { useState } from 'react';
+import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 
+const Component = () => {
 
-const AutoComplete = () => {
-    const {
-        placesService,
-        placePredictions,
-        getPlacePredictions,
-        isPlacePredictionsLoading,
-    } = usePlacesService({
-        apiKey: import.meta.env.VITE_REACT_APP_GOOGLE,
-    });
-
-    useEffect(() => {
-        // fetch place details for the first element in placePredictions array
-        if (placePredictions.length)
-            placesService?.getDetails(
-                {
-                    placeId: placePredictions[0].place_id,
-                },
-                (placeDetails) => savePlaceDetailsToState(placeDetails)
-            );
-    }, [placePredictions]);
-
+    const [place, setPLace] = useState()
+    console.log(place)
     return (
-        <>
-            <Input
-                placeholder="Debounce 500 ms"
-                onChange={(evt) => {
-                    getPlacePredictions({ input: evt.target.value });
+
+        <div>
+            <GooglePlacesAutocomplete
+                selectProps={{
+                    place,
+                    onChange: setPLace
+
                 }}
-                loading={isPlacePredictionsLoading}
+                autocompletionRequest={{
+                    bounds: [
+                        { lat: 50, lng: 50 },
+                        { lat: 100, lng: 100 }
+                    ],
+                }}
+                apiKey="AIzaSyCIkt_MWj32EbnKrxghvdDSFRzxDfC4uMs"
             />
-            {placePredictions.map((item) => renderItem(item))}
-        </>
-    );
+        </div>
+    )
 }
-export default AutoComplete
+
+export default Component;
