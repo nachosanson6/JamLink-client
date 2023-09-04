@@ -3,8 +3,7 @@ import { Form, Button, } from "react-bootstrap"
 import { AuthContext } from "../../contexts/auth.context";
 import { useNavigate } from "react-router-dom";
 import eventsservice from "../../services/events.services";
-import MyComponent from "../GoogleMap/GoogleMap";
-import Component from "../GoogleAutoComplete/GoogleAutoComplete";
+import Autocomplete from "../GoogleAutoComplete/GoogleAutoComplete";
 
 const NewEventForm = () => {
 
@@ -62,7 +61,7 @@ const NewEventForm = () => {
                 <Form.Control type="datetime-local" value={eventData.date} onChange={handleInputChange} name="date" />
             </Form.Group>
 
-            <Component eventData={eventData} setEventData={setEventData} />
+            <Autocomplete eventData={eventData} setEventData={setEventData} />
 
 
 

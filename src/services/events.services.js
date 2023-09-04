@@ -35,6 +35,11 @@ class EventsService {
         console.log('estos son los datos en el servicio', event_id, { user_id }, instrumentsData)
         return this.api.put(`/joinEvent/${event_id}`, { user_id, instrumentsData })
     }
+
+    withdrawEvent(event_id, user_id) {
+
+        return this.api.put(`/withdrawEvent/${event_id}`, { user_id })
+    }
 }
 
 const eventsservice = new EventsService()
