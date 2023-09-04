@@ -15,6 +15,10 @@ const NewEventForm = () => {
         description: "",
         address: "",
         date: "",
+        location: {
+            type: 'Point',
+            coordinates: [Number]
+        },
         organizer: loggedUser._id
     })
 
@@ -47,20 +51,20 @@ const NewEventForm = () => {
                 <Form.Control type="text" value={eventData.description} onChange={handleInputChange} name="description" />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
+            {/* <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Dirección</Form.Label>
 
                 <Form.Control type="text" value={eventData.address} onChange={handleInputChange} name="address" />
-            </Form.Group>
+            </Form.Group> */}
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Fecha</Form.Label>
-                <Form.Control type="date" value={eventData.date} onChange={handleInputChange} name="date" />
+                <Form.Control type="datetime-local" value={eventData.date} onChange={handleInputChange} name="date" />
             </Form.Group>
 
-            <Component />
+            <Component eventData={eventData} setEventData={setEventData} />
 
-            {/* <MyComponent /> */}
+
 
             <Button variant="outline-info" className="mt-3 ms-5" type="submit">
                 Crear evento

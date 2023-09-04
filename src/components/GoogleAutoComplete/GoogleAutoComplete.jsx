@@ -1,10 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
+import Geocode from "react-geocode"
 
-const Component = () => {
+const Component = ({ eventData, setEventData }) => {
 
     const [place, setPLace] = useState()
-    console.log(place)
+
+    Geocode.setApiKey("AIzaSyCIkt_MWj32EbnKrxghvdDSFRzxDfC4uMs")
+
+    place && Geocode.fromAddress(place.label).then(
+        (response) => {
+            const { lat, lng } = response.results[0].geometry.location;
+            setEventData({ ...eventData, location: { type: 'Point', coordinates: [lng, lat] }, address: place.label })
+        },
+        (error) => {
+            console.error(error);
+        }
+    );
+
     return (
 
         <div>
@@ -14,12 +27,7 @@ const Component = () => {
                     onChange: setPLace
 
                 }}
-                autocompletionRequest={{
-                    bounds: [
-                        { lat: 50, lng: 50 },
-                        { lat: 100, lng: 100 }
-                    ],
-                }}
+
                 apiKey="AIzaSyCIkt_MWj32EbnKrxghvdDSFRzxDfC4uMs"
             />
         </div>

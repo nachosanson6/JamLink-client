@@ -10,7 +10,6 @@ class EventsService {
 
     createEvent(eventData) {
         return this.api.post('/newEvent', eventData)
-
     }
 
     getAllEvents() {
@@ -19,6 +18,11 @@ class EventsService {
 
     getEventsDetails(event_id) {
         return this.api.get(`/details/${event_id}`)
+    }
+
+    joinEvent(event_id, user_id, instrumentsData) {
+        console.log('estos son los datos en el servicio', event_id, { user_id }, instrumentsData)
+        return this.api.put(`/joinEvent/${event_id}`, { user_id, instrumentsData })
     }
 }
 
