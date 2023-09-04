@@ -7,6 +7,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../contexts/auth.context";
 
 const UserDetails = ({ userInformation }) => {
+
   const { loggedUser, logout } = useContext(AuthContext);
 
   const handleFormSubmit = (e) => {
@@ -17,6 +18,8 @@ const UserDetails = ({ userInformation }) => {
       .then(() => logout())
       .catch((err) => console.log(err));
   };
+
+  const isCurrentUser = loggedUser._id === userInformation._id
 
   return (
     <Col
@@ -42,6 +45,9 @@ const UserDetails = ({ userInformation }) => {
       ))}
 
       <hr />
+      
+      {isCurrentUser && (
+        <>
       <Link to={`/user/edit/${userInformation.id}`}>
         <Button variant="outline-success">Editar</Button>{" "}
       </Link>
@@ -50,6 +56,8 @@ const UserDetails = ({ userInformation }) => {
           Eliminar
         </Button>{" "}
       </Form>
+      </>
+      )}
     </Col>
   );
 };

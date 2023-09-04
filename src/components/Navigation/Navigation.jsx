@@ -11,6 +11,7 @@ import { useState } from "react";
 
 const Navigation = () => {
   // VOLVER A PONER invertedTheme EN LA CONST DE THEME Y switchTheme
+  
   const { theme, switchTheme } = useContext(ThemeContext);
   const { logout, loggedUser } = useContext(AuthContext);
 

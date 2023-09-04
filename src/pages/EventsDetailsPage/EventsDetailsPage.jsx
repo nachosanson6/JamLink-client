@@ -19,7 +19,6 @@ const EventsDetailsPage = () => {
       .then(({ data }) => setEventInformation(data))
       .catch((err) => console.log(err))
   }
-  console.log(eventInformation)
 
   useEffect(() => {
     loadEventDetails()
