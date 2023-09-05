@@ -4,11 +4,11 @@ const ThemeContext = createContext()
 
 function ThemeProviderWrapper(props) {
 
-    const [theme, setTheme] = useState('ligth')
+    const [theme, setTheme] = useState('light')
 
-    const switchTheme = () => setTheme(theme === 'dark' ? 'ligth' : 'dark')
+    const switchTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark')
 
-    // const invertedTheme = theme === 'dark' ? 'ligth' : 'dark'  COMENTADO PARA PROBAR SIN EL INVERTED
+    // const invertedTheme = theme === 'dark' ? 'light' : 'dark'  COMENTADO PARA PROBAR SIN EL INVERTED
 
     return (
 

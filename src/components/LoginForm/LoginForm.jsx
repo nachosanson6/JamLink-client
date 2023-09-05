@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../../contexts/auth.context"
 
 
-const LoginForm = ({setShowModal}) => {
+const LoginForm = ({setShowModal, login}) => {
 
     const [loginData, setLoginData] = useState({
         email: '',
@@ -31,7 +31,8 @@ const LoginForm = ({setShowModal}) => {
                 storeToken(data.authToken)
                 authenticateUser()
                 setShowModal(false)
-                navigate('/')
+                {login&&
+                navigate('/')}
             })
             .catch(err => console.log(err))
     }

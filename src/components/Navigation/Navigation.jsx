@@ -1,21 +1,21 @@
-import { useContext } from "react";
-import { Navbar, Nav, NavDropdown, Container, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import { AuthContext } from "../../contexts/auth.context";
-import logoDark from "./../../assets/images/logoDark.png";
-import iconProfile from "./../../assets/images/iconProfile.png";
-import { ThemeContext } from "../../contexts/theme.context";
-import { Modal } from "react-bootstrap";
-import LoginForm from "../../components/LoginForm/LoginForm";
-import { useState } from "react";
+import { useContext } from "react"
+import { Navbar, Nav, NavDropdown, Container, Button } from "react-bootstrap"
+import { Link } from "react-router-dom"
+import { AuthContext } from "../../contexts/auth.context"
+import logoDark from "./../../assets/images/logoDark.png"
+import iconProfile from "./../../assets/images/iconProfile.png"
+import { ThemeContext } from "../../contexts/theme.context"
+import { Modal } from "react-bootstrap"
+import LoginForm from "../../components/LoginForm/LoginForm"
+import { useState } from "react"
 
 const Navigation = () => {
   // VOLVER A PONER invertedTheme EN LA CONST DE THEME Y switchTheme
   
-  const { theme, switchTheme } = useContext(ThemeContext);
-  const { logout, loggedUser } = useContext(AuthContext);
-
-  const [showModal, setShowModal] = useState(false);
+  const { theme, switchTheme } = useContext(ThemeContext)
+  const { logout, loggedUser } = useContext(AuthContext)
+  const login = true
+  const [showModal, setShowModal] = useState(false)
 
   return (
     <>
@@ -28,7 +28,6 @@ const Navigation = () => {
         expand="lg"
         style={{ padding: 0 }}
       >
-        {/* <Container> */}
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Navbar.Brand className="ms-10" style={{ padding: 0 }}>
@@ -97,7 +96,6 @@ const Navigation = () => {
                     Registro
                   </Link>
                   <hr />
-                  {/* <Link to={'/login'} className='nav-link'>Iniciar Sesión</Link> */}
                   <Button variant="dark" onClick={() => setShowModal(true)}>
                     Iniciar Sesión
                   </Button>
@@ -121,7 +119,6 @@ const Navigation = () => {
             </NavDropdown>
           </div>
         </Navbar.Collapse>
-        {/* </Container> */}
       </Navbar>
 
       <Modal show={showModal} onHide={() => setShowModal(false)}>
@@ -129,11 +126,11 @@ const Navigation = () => {
           <Modal.Title>Acceso</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <LoginForm setShowModal={setShowModal} />
+          <LoginForm setShowModal={setShowModal} login={login} />
         </Modal.Body>
       </Modal>
     </>
-  );
-};
+  )
+}
 
-export default Navigation;
+export default Navigation
