@@ -1,5 +1,5 @@
 import { Container, Card, Row, Col, Button, Modal } from "react-bootstrap"
-import { useNavigate, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import eventsservice from "../../services/events.services"
 import { useContext, useEffect, useState } from "react"
 import SpinnerComponent from "../../components/Spinner/Spinner"
@@ -13,12 +13,21 @@ import { AuthContext } from "../../contexts/auth.context"
 const EventsDetailsPage = () => {
   const { event_id } = useParams()
   const [eventInformation, setEventInformation] = useState(null)
+  const { loggedUser } = useContext(AuthContext)
 
-  const [showModal, setShowModal] = useState(false);
+  const usersJoined = []
+  { eventInformation?.attendees.map(elm => { usersJoined.push(elm.user) }) }
 
   const navigate = useNavigate()
 
-  const { loggedUser } = useContext(AuthContext)
+
+
+  const [showModal, setShowModal] = useState(false);
+  const [isJoined, setIsJoined] = useState(true)
+
+  useEffect(() => {
+    loadEventDetails()
+  }, [isJoined])
 
   const loadEventDetails = () => {
     eventsservice
@@ -28,26 +37,26 @@ const EventsDetailsPage = () => {
   }
 
   const withdrawEvent = e => {
-
     eventsservice
       .withdrawEvent(eventInformation._id, loggedUser._id)
-      .then(() => navigate(`/events`))
+      .then(({ data }) => console.log(data))
       .catch(err => console.log(err))
 
   }
 
+  const deleteEvent = e => {
+    eventsservice
+      .deleteEvent(eventInformation._id)
+      .then(() => navigate('/events'))
+      .catch(err => console.log(err))
+  }
 
-
-  const usersJoined = []
-  { eventInformation?.attendees.map(elm => { usersJoined.push(elm.user) }) }
-
-  useEffect(() => {
-    loadEventDetails()
-  }, [event_id])
 
   if (!eventInformation) {
     return <SpinnerComponent />
   }
+  const ownEvent = eventInformation.owner === loggedUser._id
+
 
   return (
 
@@ -87,12 +96,20 @@ const EventsDetailsPage = () => {
 
                 <div className="mt-3">
                   {usersJoined.includes(loggedUser._id) ?
-                    <Button variant="outline-danger" onClick={() => withdrawEvent()}>Desapuntarse</Button>
+                    <Button variant="outline-danger" onClick={() => { withdrawEvent(); setIsJoined(!isJoined) }}>Desapuntarse</Button>
                     :
                     <Button variant="outline-success" onClick={() => setShowModal(true)}>Unirte</Button>
                   }
-                  <Button variant="outline-warning">Editar</Button>
-                  <Button variant="outline-danger">Eliminar</Button>
+
+                  {ownEvent && (
+                    <>
+                      <Link to={`/event/edit/${event_id}`}>
+                        <Button variant="outline-warning" >Editar</Button>
+                      </Link>
+                      <Button variant="outline-danger" onClick={deleteEvent}>Eliminar</Button>
+                    </>
+                  )}
+
                 </div>
               </Col>
               <Col className="ms-3">
@@ -107,7 +124,7 @@ const EventsDetailsPage = () => {
             <Modal.Title>Elige tus instrumentos</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <JoinForm setShowModal={setShowModal} />
+            <JoinForm setShowModal={setShowModal} isJoined={isJoined} setIsJoined={setIsJoined} />
           </Modal.Body>
         </Modal>
 

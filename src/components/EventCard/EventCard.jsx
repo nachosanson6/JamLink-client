@@ -10,7 +10,7 @@ const EventCard = ({ title, description, date, organizer, _id }) => {
  
 
   return (
-    
+
     <Card>
       <Card.Body>
         <Card.Title>{title}</Card.Title>
@@ -18,7 +18,7 @@ const EventCard = ({ title, description, date, organizer, _id }) => {
           <b>Fecha:</b> {formattedDate} <b>Hora de inicio:</b> {formattedTime}</Card.Subtitle>
         <Card.Text>{description}</Card.Text>
         <p>{organizer}</p>
-        <Link className="btn btn-outline-dark" to={`/events/details/${_id}`}>
+        <Link className="btn btn-outline-warning" to={`/events/details/${_id}`}>
           Detalles
         </Link>
       </Card.Body>
