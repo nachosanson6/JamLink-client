@@ -7,7 +7,7 @@ import eventsservice from "../../services/events.services"
 
 
 
-const JoinForm = () => {
+const JoinForm = ({ setIsJoined, isJoined, setShowModal }) => {
 
     const navigate = useNavigate()
 
@@ -18,11 +18,10 @@ const JoinForm = () => {
 
     })
 
-    console.log('------', event_id)
     const joinEvent = e => {
         eventsservice
             .joinEvent(event_id, loggedUser._id, signupData)
-            .then(() => navigate(`/events`))
+            .then(() => { setIsJoined(!isJoined); setShowModal(false) })
             .catch(err => console.log(err))
 
     }

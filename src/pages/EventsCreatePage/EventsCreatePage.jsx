@@ -1,7 +1,22 @@
 import { Container, Row, Col } from 'react-bootstrap'
 import NewEventForm from '../../components/NewEventForm/NewEventForm'
+import { useState } from 'react'
 
 const EventsCreatePage = () => {
+
+    const isEdition = false
+
+    const [eventData, setEventData] = useState({
+        title: "",
+        description: "",
+        address: "",
+        date: "",
+        location: {
+            type: 'Point',
+            coordinates: [Number]
+        },
+
+    })
 
     return (
 
@@ -14,7 +29,7 @@ const EventsCreatePage = () => {
 
                     <hr />
 
-                    <NewEventForm />
+                    <NewEventForm eventData={eventData} isEdition={isEdition} />
 
                 </Col>
 

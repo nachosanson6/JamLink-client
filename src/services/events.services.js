@@ -6,21 +6,21 @@ class EventsService {
         this.api = axios.create({
             baseURL: `${import.meta.env.VITE_API_URL}/events`
         })
-// INTERCEPTOR
+        // INTERCEPTOR
         this.api.interceptors.request.use((config) => {
 
             const storedToken = localStorage.getItem("authToken");
-        
+
             if (storedToken) {
                 config.headers = { Authorization: `Bearer ${storedToken}` }
             }
-        
+
             return config
-        })        
+        })
     }
 
-    createEvent(eventData) {
-        return this.api.post('/newEvent', eventData)
+    createEvent(eventDataForm) {
+        return this.api.post('/newEvent', eventDataForm)
     }
 
     getAllEvents() {
@@ -39,6 +39,13 @@ class EventsService {
     withdrawEvent(event_id, user_id) {
 
         return this.api.put(`/withdrawEvent/${event_id}`, { user_id })
+    }
+    updateEvent(eventDataForm) {
+        return this.api.put('/editEvent', eventDataForm)
+    }
+
+    deleteEvent(event_id) {
+        return this.api.post(`/deleteEvent/${event_id}`)
     }
 }
 
