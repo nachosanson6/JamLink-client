@@ -10,7 +10,6 @@ const InstrumentsForm = ({ signupData, setSignupData }) => {
 
         setSignupData({ ...signupData, instruments });
     };
-    console.log(signupData)
 
     return (
 

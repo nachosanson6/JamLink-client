@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import { formatDate, formatTime } from "../../Utils/date.util"
 
 
-const EventCard = ({ title, description, date, organizer, _id }) => {
+const EventCard = ({ title, description, date, owner, _id }) => {
 
   const formattedDate = formatDate(new Date(date))
   const formattedTime = formatTime(new Date(date))
@@ -17,7 +17,7 @@ const EventCard = ({ title, description, date, organizer, _id }) => {
         <Card.Subtitle className="mb-2 text-muted">
           <b>Fecha:</b> {formattedDate} <b>Hora de inicio:</b> {formattedTime}</Card.Subtitle>
         <Card.Text>{description}</Card.Text>
-        <p>{organizer}</p>
+        <p>{owner}</p>
         <Link className="btn btn-outline-warning" to={`/events/details/${_id}`}>
           Detalles
         </Link>

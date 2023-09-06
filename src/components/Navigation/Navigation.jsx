@@ -3,6 +3,7 @@ import { Navbar, Nav, NavDropdown, Container, Button } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import { AuthContext } from "../../contexts/auth.context"
 import logoDark from "./../../assets/images/logoDark.png"
+import logoLight from "./../../assets/images/logoLight.png"
 import iconProfile from "./../../assets/images/iconProfile.png"
 import { ThemeContext } from "../../contexts/theme.context"
 import { Modal } from "react-bootstrap"
@@ -10,7 +11,6 @@ import LoginForm from "../../components/LoginForm/LoginForm"
 import { useState } from "react"
 
 const Navigation = () => {
-  // VOLVER A PONER invertedTheme EN LA CONST DE THEME Y switchTheme
   
   const { theme, switchTheme } = useContext(ThemeContext)
   const { logout, loggedUser } = useContext(AuthContext)
@@ -19,7 +19,6 @@ const Navigation = () => {
 
   return (
     <>
-      {/* // <Navbar bg={invertedTheme} data-bs-theme={invertedTheme}> */}
 
       <Navbar
         bg={theme === "dark" ? "light" : "dark"}
@@ -34,7 +33,7 @@ const Navigation = () => {
             <Link to={"/"} className="nav-link">
               <img
                 alt=""
-                src={logoDark}
+                src={theme === "dark" ? logoLight : logoDark}
                 width="100"
                 height="100"
                 className="d-inline-block align-top"
