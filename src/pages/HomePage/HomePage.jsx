@@ -6,24 +6,24 @@ import Mapper from '../../components/GoogleMap/GoogleMap'
 
 const HomePage = () => {
 
-    const [eventData, setEventData] = useState()
+    // const [eventData, setEventData] = useState()
 
-    useEffect(() => {
-        getEventData()
-    }, [])
+    // useEffect(() => {
+    //     getEventData()
+    // }, [])
 
 
-    const getEventData = () => {
-        eventsservice
-            .getAllEvents()
-            .then(({ data }) => setEventData(data))
-            .catch(err => console.log(err))
-    }
+    // const getEventData = () => {
+    //     eventsservice
+    //         .getAllEvents()
+    //         .then(({ data }) => setEventData(data))
+    //         .catch(err => console.log(err))
+    // }
 
     return (
         <Container>
             <h1>HomePage</h1>
-            <Mapper location={eventData} />
+            {/* <Mapper location={eventData} /> */}
         </Container>
     )
 }

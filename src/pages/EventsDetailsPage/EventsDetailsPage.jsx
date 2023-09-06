@@ -13,19 +13,15 @@ import FriendsAvatar from "../../components/FriendsAvatar/FriendsAvatar.util"
 
 
 const EventsDetailsPage = () => {
+
   const { event_id } = useParams()
   const [eventInformation, setEventInformation] = useState(null)
-  const { loggedUser } = useContext(AuthContext)
-
-  const usersJoined = []
-  { eventInformation?.attendees.map(elm => { usersJoined.push(elm.user) }) }
-
-  const navigate = useNavigate()
-
-
-
   const [showModal, setShowModal] = useState(false);
   const [isJoined, setIsJoined] = useState(true)
+  const { loggedUser } = useContext(AuthContext)
+  const navigate = useNavigate()
+
+  const usersJoined = eventInformation?.attendees.map(elm => elm.user)
 
   useEffect(() => {
     loadEventDetails()
@@ -43,8 +39,8 @@ const EventsDetailsPage = () => {
       .withdrawEvent(eventInformation._id, loggedUser._id)
       .then(({ data }) => console.log(data))
       .catch(err => console.log(err))
-
   }
+
   const deleteEvent = e => {
     eventsservice
       .deleteEvent(eventInformation._id)
@@ -56,8 +52,8 @@ const EventsDetailsPage = () => {
   if (!eventInformation) {
     return <SpinnerComponent />
   }
-  const ownEvent = eventInformation.owner === loggedUser._id
 
+  const ownEvent = eventInformation.owner === loggedUser._id
   const formattedDate = formatDate(new Date(eventInformation.date))
   const formattedTime = formatTime(new Date(eventInformation.date))
 

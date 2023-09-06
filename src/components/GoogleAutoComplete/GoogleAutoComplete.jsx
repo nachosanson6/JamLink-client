@@ -11,8 +11,9 @@ const Autocomplete = ({ eventData, setEventData }) => {
     place && Geocode
         .fromAddress(place.label)
         .then((response) => {
-            const { lat, lng } = response.results[0].geometry.location;
+            const { lat, lng } = response.results[0].geometry.location
             setEventData({ ...eventData, location: { type: 'Point', coordinates: [lng, lat] }, address: place.label })
+            setPLace(undefined)
         },
             (error) => {
                 console.error(error);
@@ -26,10 +27,7 @@ const Autocomplete = ({ eventData, setEventData }) => {
                 selectProps={{
                     place,
                     onChange: setPLace,
-
-
                 }}
-
                 apiKey="AIzaSyCIkt_MWj32EbnKrxghvdDSFRzxDfC4uMs"
             />
         </div>

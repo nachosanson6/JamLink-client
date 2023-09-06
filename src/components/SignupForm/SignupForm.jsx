@@ -50,10 +50,10 @@ const SignupForm = () => {
         action
             .then(() => navigate(path))
             .catch(err => console.log(err))
-
     }
 
     const handleFileUpload = (e) => {
+
         const formData = new FormData()
         formData.append('imageData', e.target.files[0])
 
@@ -71,13 +71,11 @@ const SignupForm = () => {
             <Form.Group className="mb-3" controlId="username">
                 <Form.Label>Nombre de usuario </Form.Label>
                 <Form.Control type="text" value={signupData.username} onChange={handleInputChange} name="username" />
-
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="email">
                 <Form.Label>Email </Form.Label>
                 <Form.Control type="email" value={signupData.email} onChange={handleInputChange} name="email" />
-
             </Form.Group>
             {
                 !loggedUser &&
@@ -93,12 +91,9 @@ const SignupForm = () => {
 
             <InstrumentsForm signupData={signupData} setSignupData={setSignupData} />
 
-            {/* TODO: DESACOPLAR CHECKBOXES */}
-
             <Form.Group className="mb-3" controlId="description">
                 <Form.Label>Descripción </Form.Label>
                 <Form.Control type="text" value={signupData.description} onChange={handleInputChange} name="description" />
-
             </Form.Group>
             {
                 !loggedUser &&

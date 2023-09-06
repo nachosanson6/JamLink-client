@@ -5,8 +5,6 @@ import { AuthContext } from "../../contexts/auth.context"
 import { useNavigate, useParams } from "react-router-dom"
 import eventsservice from "../../services/events.services"
 
-
-
 const JoinForm = ({ setIsJoined, isJoined, setShowModal }) => {
 
     const navigate = useNavigate()
@@ -15,23 +13,22 @@ const JoinForm = ({ setIsJoined, isJoined, setShowModal }) => {
     const { event_id } = useParams()
     const [signupData, setSignupData] = useState({
         instruments: []
-
     })
 
     const joinEvent = e => {
         eventsservice
             .joinEvent(event_id, loggedUser._id, signupData)
-            .then(() => { setIsJoined(!isJoined); setShowModal(false) })
+            .then(() => {
+                setIsJoined(!isJoined)
+                setShowModal(false)
+            })
             .catch(err => console.log(err))
-
     }
-
-
 
     return (
         <>
             <InstrumentsForm signupData={signupData} setSignupData={setSignupData} />
-            <Button variant="outline-success" onClick={() => joinEvent()}>Únete!</Button>
+            <Button variant="outline-success" onClick={joinEvent}>Únete!</Button>
         </>
     )
 }

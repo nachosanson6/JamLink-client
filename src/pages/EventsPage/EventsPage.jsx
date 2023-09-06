@@ -6,13 +6,10 @@ import { Link } from "react-router-dom"
 const EventsPage = () => {
 
     return (
-        <>
-            <Container>
-                <Link to={'/event/create'} className="btn btn-outline-dark mt-5">Nuevo Evento</Link>
-                <EventsList />
-            </Container>
-
-        </>
+        <Container>
+            <Link to={'/event/create'} className="btn btn-outline-dark mt-5">Nuevo Evento</Link>
+            <EventsList />
+        </Container>
     )
 }
 

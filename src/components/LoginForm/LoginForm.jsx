@@ -2,18 +2,15 @@ import { useContext, useState } from "react"
 import { Form, Button } from "react-bootstrap"
 import authService from "../../services/auth.services"
 import { useNavigate } from "react-router-dom"
-import { AuthContext } from "../../contexts/auth.context"
 
 
-const LoginForm = ({ setShowModal, login }) => {
+const LoginForm = ({ fireFinalActions }) => {
 
     const [loginData, setLoginData] = useState({
         email: '',
         password: ''
     })
     const [type, setType] = useState('password');
-
-    const navigate = useNavigate()
 
     const { authenticateUser, storeToken } = useContext(AuthContext)
 
@@ -31,21 +28,14 @@ const LoginForm = ({ setShowModal, login }) => {
             .then(({ data }) => {
                 storeToken(data.authToken)
                 authenticateUser()
-                setShowModal(false)
-                {
-                    login &&
-                        navigate('/')
-                }
+                fireFinalActions()
             })
             .catch(err => console.log(err))
     }
 
     const handleToggle = () => {
-        if (type === 'password') {
-            setType('text')
-        } else {
-            setType('password')
-        }
+        const typeValue = type === 'password' ? 'text' : 'password'
+        setType(typeValue)
     }
 
     return (

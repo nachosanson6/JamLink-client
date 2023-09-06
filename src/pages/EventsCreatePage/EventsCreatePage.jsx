@@ -4,8 +4,6 @@ import { useState } from 'react'
 
 const EventsCreatePage = () => {
 
-    const isEdition = false
-
     const [eventData, setEventData] = useState({
         title: "",
         description: "",
@@ -15,7 +13,6 @@ const EventsCreatePage = () => {
             type: 'Point',
             coordinates: [Number]
         },
-
     })
 
     return (
@@ -29,7 +26,7 @@ const EventsCreatePage = () => {
 
                     <hr />
 
-                    <NewEventForm eventData={eventData} isEdition={isEdition} />
+                    <NewEventForm eventData={eventData} isEdition={false} />
 
                 </Col>
 

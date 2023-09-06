@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import { Navbar, Nav, NavDropdown, Container, Button } from "react-bootstrap"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { AuthContext } from "../../contexts/auth.context"
 import logoDark from "./../../assets/images/logoDark.png"
 import logoLight from "./../../assets/images/logoLight.png"
@@ -11,11 +11,17 @@ import LoginForm from "../../components/LoginForm/LoginForm"
 import { useState } from "react"
 
 const Navigation = () => {
-  
+
   const { theme, switchTheme } = useContext(ThemeContext)
   const { logout, loggedUser } = useContext(AuthContext)
-  const login = true
   const [showModal, setShowModal] = useState(false)
+
+  const navigate = useNavigate()
+
+  const fireFinalActions = () => {
+    setShowModal(false)
+    navigate('/')
+  }
 
   return (
     <>
@@ -78,9 +84,8 @@ const Navigation = () => {
                       width: "100%",
                       height: "100%",
                       borderRadius: "50%",
-                      backgroundImage: `url(${
-                        loggedUser ? loggedUser.avatar : iconProfile
-                      })`,
+                      backgroundImage: `url(${loggedUser ? loggedUser.avatar : iconProfile
+                        })`,
                       backgroundPosition: "center",
                       backgroundRepeat: "no-repeat",
                       backgroundSize: "cover",
@@ -125,7 +130,7 @@ const Navigation = () => {
           <Modal.Title>Acceso</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <LoginForm setShowModal={setShowModal} login={login} />
+          <LoginForm fireFinalActions={fireFinalActions} />
         </Modal.Body>
       </Modal>
     </>

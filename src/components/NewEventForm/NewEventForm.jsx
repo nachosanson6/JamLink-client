@@ -7,7 +7,6 @@ import Autocomplete from "../GoogleAutoComplete/GoogleAutoComplete";
 
 const NewEventForm = ({ eventData, isEdition }) => {
 
-    const { loggedUser } = useContext(AuthContext)
     const [eventDataForm, setEventDataForm] = useState(eventData)
 
     const navigate = useNavigate()
@@ -19,6 +18,8 @@ const NewEventForm = ({ eventData, isEdition }) => {
 
     const handleFormSubmit = e => {
         e.preventDefault()
+
+        // TODO: RESOLVER CON ACTION
 
         isEdition ?
             eventsservice

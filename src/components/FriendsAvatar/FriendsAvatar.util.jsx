@@ -8,10 +8,16 @@ const FriendsAvatar = ({ friendId }) => {
 
     const [friendAvatar, setFriendAvatar] = useState(null)
 
-    userservice
-        .getFriendAvatar(friendId)
-        .then(({ data }) => setFriendAvatar(data))
-        .catch(err => console.log(err))
+    useEffect(() => {
+        getFriendsAvatar()
+    }, [])
+
+    const getFriendsAvatar = () => {
+        userservice
+            .getFriendAvatar(friendId)
+            .then(({ data }) => setFriendAvatar(data))
+            .catch(err => console.log(err))
+    }
 
     if (!friendAvatar) {
         return <SpinnerComponent />

@@ -40,6 +40,7 @@ class EventsService {
         return this.api.put(`/withdrawEvent/${event_id}`, { user_id })
     }
     updateEvent(eventDataForm) {
+
         return this.api.put('/editEvent', eventDataForm)
     }
 

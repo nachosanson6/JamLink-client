@@ -10,7 +10,6 @@ const EventsEditPage = () => {
     const { event_id } = useParams()
 
     const [eventData, setEventData] = useState()
-    const isEdition = true
 
     useEffect(() => {
         getEventInformation()
@@ -38,7 +37,7 @@ const EventsEditPage = () => {
                     <h1>Editar evento</h1>
 
                     <hr />
-                    <NewEventForm eventData={eventData} isEdition={isEdition} />
+                    <NewEventForm eventData={eventData} isEdition={true} />
                 </Col>
 
             </Row>

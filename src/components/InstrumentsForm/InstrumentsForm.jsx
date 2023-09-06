@@ -117,9 +117,7 @@ const InstrumentsForm = ({ signupData, setSignupData }) => {
                 />
             </div>
         ))
-
     )
-
 }
 
 export default InstrumentsForm

@@ -7,7 +7,6 @@ const EventCard = ({ title, description, date, owner, _id }) => {
 
   const formattedDate = formatDate(new Date(date))
   const formattedTime = formatTime(new Date(date))
- 
 
   return (
 
