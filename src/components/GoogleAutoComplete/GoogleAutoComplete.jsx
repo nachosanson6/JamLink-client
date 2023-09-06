@@ -8,15 +8,16 @@ const Autocomplete = ({ eventData, setEventData }) => {
 
     Geocode.setApiKey("AIzaSyCIkt_MWj32EbnKrxghvdDSFRzxDfC4uMs")
 
-    place && Geocode.fromAddress(place.label).then(
-        (response) => {
+    place && Geocode
+        .fromAddress(place.label)
+        .then((response) => {
             const { lat, lng } = response.results[0].geometry.location;
             setEventData({ ...eventData, location: { type: 'Point', coordinates: [lng, lat] }, address: place.label })
         },
-        (error) => {
-            console.error(error);
-        }
-    );
+            (error) => {
+                console.error(error);
+            }
+        );
 
     return (
 
