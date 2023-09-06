@@ -1,4 +1,4 @@
-import { Col, Button, Form } from "react-bootstrap";
+import { Col, Button, Form, Row } from "react-bootstrap";
 import { getInstruments } from "../../utils/instruments.util";
 import { Link, useNavigate } from "react-router-dom";
 import FriendsAvatar from "../FriendsAvatar/FriendsAvatar.util";
@@ -38,25 +38,31 @@ const UserDetails = ({ userInformation }) => {
       <h2>Instrumentos:</h2>
 
       {userInformation.instruments.map((elm) => getInstruments(elm))}
-      <h2>Amigos:</h2>
+      <div>
+        <Row >
+          <h2>Amigos:</h2>
 
-      {userInformation.friends.map((elm) => (
-        <FriendsAvatar friendId={elm} />
-      ))}
+          {userInformation.friends.map((elm) => (
+            <Col md={4} >
+              <FriendsAvatar friendId={elm} />
+            </Col>
+          ))}
 
+        </Row>
+      </div>
       <hr />
-      
+
       {isCurrentUser && (
         <>
-      <Link to={`/user/edit/${userInformation.id}`}>
-        <Button variant="outline-success">Editar</Button>{" "}
-      </Link>
-      <Form onSubmit={handleFormSubmit}>
-        <Button variant="outline-danger" type="submit">
-          Eliminar
-        </Button>{" "}
-      </Form>
-      </>
+          <Link to={`/user/edit/${userInformation.id}`}>
+            <Button variant="outline-success">Editar</Button>{" "}
+          </Link>
+          <Form onSubmit={handleFormSubmit}>
+            <Button variant="outline-danger" type="submit">
+              Eliminar
+            </Button>{" "}
+          </Form>
+        </>
       )}
     </Col>
   );

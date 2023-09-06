@@ -32,7 +32,6 @@ class EventsService {
     }
 
     joinEvent(event_id, user_id, instrumentsData) {
-        console.log('estos son los datos en el servicio', event_id, { user_id }, instrumentsData)
         return this.api.put(`/joinEvent/${event_id}`, { user_id, instrumentsData })
     }
 

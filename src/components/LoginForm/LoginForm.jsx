@@ -5,12 +5,13 @@ import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../../contexts/auth.context"
 
 
-const LoginForm = ({setShowModal, login}) => {
+const LoginForm = ({ setShowModal, login }) => {
 
     const [loginData, setLoginData] = useState({
         email: '',
         password: ''
     })
+    const [type, setType] = useState('password');
 
     const navigate = useNavigate()
 
@@ -31,10 +32,20 @@ const LoginForm = ({setShowModal, login}) => {
                 storeToken(data.authToken)
                 authenticateUser()
                 setShowModal(false)
-                {login&&
-                navigate('/')}
+                {
+                    login &&
+                        navigate('/')
+                }
             })
             .catch(err => console.log(err))
+    }
+
+    const handleToggle = () => {
+        if (type === 'password') {
+            setType('text')
+        } else {
+            setType('password')
+        }
     }
 
     return (
@@ -48,7 +59,8 @@ const LoginForm = ({setShowModal, login}) => {
 
             <Form.Group className="mb-3" controlId="password">
                 <Form.Label>Contraseña</Form.Label>
-                <Form.Control type="password" value={loginData.password} onChange={handleInputChange} name="password" />
+                <Form.Control type={type} value={loginData.password} onChange={handleInputChange} name="password" id="myInput" />
+                <input type="checkbox" onClick={handleToggle} />Mostrar contraseña
             </Form.Group>
 
             <div className="d-grid">

@@ -4,10 +4,12 @@ import eventsservice from "../../services/events.services"
 import { useContext, useEffect, useState } from "react"
 import SpinnerComponent from "../../components/Spinner/Spinner"
 import SalaelSol from "../../assets/images/SalaelSol.png"
-import MyComponent from "../../components/GoogleMap/GoogleMap"
+import Mapper from "../../components/GoogleMap/GoogleMap"
 import JoinForm from "../../components/JoinForm/JoinForm"
 import AttendeeCard from "../../components/AttendeeCard/AttendeeCard"
 import { AuthContext } from "../../contexts/auth.context"
+import { formatDate, formatTime } from "../../Utils/date.util"
+import FriendsAvatar from "../../components/FriendsAvatar/FriendsAvatar.util"
 
 
 const EventsDetailsPage = () => {
@@ -43,7 +45,6 @@ const EventsDetailsPage = () => {
       .catch(err => console.log(err))
 
   }
-
   const deleteEvent = e => {
     eventsservice
       .deleteEvent(eventInformation._id)
@@ -56,6 +57,9 @@ const EventsDetailsPage = () => {
     return <SpinnerComponent />
   }
   const ownEvent = eventInformation.owner === loggedUser._id
+
+  const formattedDate = formatDate(new Date(eventInformation.date))
+  const formattedTime = formatTime(new Date(eventInformation.date))
 
 
   return (
@@ -90,6 +94,11 @@ const EventsDetailsPage = () => {
                 <Card.Text className="d-flex align-items-center justify-content-center">
                   {eventInformation.address}
                 </Card.Text>
+                <Card.Subtitle className="mb-2 text-muted">
+                  <b>Fecha:</b> {formattedDate} <b>Hora de inicio:</b> {formattedTime}</Card.Subtitle>
+                <p>Creado por:</p>
+                <FriendsAvatar friendId={eventInformation.owner} />
+                <p>Asistirán al evento:</p>
                 <Row className="d-flex">
                   {eventInformation.attendees.map((elm) => <AttendeeCard key={elm._id} attendee={elm} />)}
                 </Row>
@@ -113,7 +122,7 @@ const EventsDetailsPage = () => {
                 </div>
               </Col>
               <Col className="ms-3">
-                <MyComponent location={eventInformation.location} />
+                <Mapper location={[eventInformation.location]} label={eventInformation.title} />
               </Col>
             </Row >
           </Card.Body>
