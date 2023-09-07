@@ -7,12 +7,12 @@ import { getInstruments } from "../../utils/instruments.util"
 const AttendeeCard = ({ attendee }) => {
 
     return (
-        <Card style={{ width: '18rem', border: "2px solid black" }} >
+        <Card style={{ width: '18rem', border: "2px solid black", color: "white" }} >
 
-            <Card.Body>
+            <Card.Body style={{ color: "white" }}>
                 <Row>
                     <Col>
-                        <FriendsAvatar friendId={attendee.user} />
+                        <FriendsAvatar style={{ border: "2px solid black" }} friendId={attendee.user} />
                     </Col>
                     <Col className="d-flex mt-2 me-5" >
                         <Row>

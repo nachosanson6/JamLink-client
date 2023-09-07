@@ -3,7 +3,7 @@ import { Form, Button } from "react-bootstrap"
 import authService from "../../services/auth.services"
 import { useNavigate } from "react-router-dom"
 import { AuthContext } from './../../contexts/auth.context'
-
+import './LoginForm.css'
 
 const LoginForm = ({ fireFinalActions }) => {
 
@@ -43,12 +43,12 @@ const LoginForm = ({ fireFinalActions }) => {
 
         <Form onSubmit={handleSubmit}>
 
-            <Form.Group className="mb-3 fs-4" controlId="email">
+            <Form.Group className="mb-3 fs-5" style={{ color: "black" }} controlId="email">
                 <Form.Label>Email</Form.Label>
                 <Form.Control type="email" value={loginData.email} onChange={handleInputChange} name="email" />
             </Form.Group>
 
-            <Form.Group className="mb-3 fs-4" controlId="password">
+            <Form.Group className="mb-3 fs-5" style={{ color: "black" }} controlId="password">
                 <Form.Label>Contraseña</Form.Label>
                 <Form.Control type={type} value={loginData.password} onChange={handleInputChange} name="password" id="myInput" />
                 <input type="checkbox" onClick={handleToggle} />Mostrar contraseña

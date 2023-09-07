@@ -7,7 +7,7 @@ const EventsPage = () => {
 
     return (
         <Container>
-            <Link to={'/event/create'} className="btn btn-outline-dark mt-5">Nuevo Evento</Link>
+            <Link to={'/event/create'} className="btn btn-outline-light mt-5">Nuevo Evento</Link>
             <EventsList />
         </Container>
     )

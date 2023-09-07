@@ -97,13 +97,13 @@ const SignupForm = () => {
             </Form.Group>
             {
                 !loggedUser &&
-                <Button variant="primary" type="submit">
+                <Button variant="dark" type="submit">
                     Resgistrase
                 </Button>
             }
             {
                 loggedUser &&
-                <Button variant="primary" type="submit">
+                <Button variant="dark" type="submit">
                     Actualizar
                 </Button>
             }

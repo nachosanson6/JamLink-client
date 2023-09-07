@@ -1,5 +1,6 @@
 import { Container } from "react-bootstrap"
 import UserList from './../../components/UserList/UserList'
+import './CommunityPage.css'
 
 const CommunityPage = () => {
 

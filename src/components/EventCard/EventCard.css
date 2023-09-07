@@ -1,23 +1,13 @@
-.card-body {
+.events {
     padding-bottom: 50px;
     color: white !important;
-}
-
-.userImg {
-    width: 80% !important;
-    border: 1px solid;
-    border-radius: 10%;
-    margin: 15px 10px 10px 30px;
-
-}
-
-.custom-card {
-    color: white;
-    overflow: hidden;
     background-color: #7b0c1594 !important;
-    border-radius: 20%;
-    margin-bottom: 10px;
     box-shadow: 3px 1px 10px 1px rgb(255, 255, 255);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+
 }
 
 .custom-card .card-text {

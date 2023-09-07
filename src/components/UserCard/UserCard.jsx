@@ -38,26 +38,28 @@ const UserCard = ({ _id, username, avatar, instruments, loadUsers }) => {
 
   return (
     <Col lg={{ span: 3 }} md={{ span: 6 }}>
-      <Card className="custom-card" style={{ border: "2px solid black" }}>
+      <Card className="custom-card">
         <Card.Img variant="top" className="userImg" src={avatar} />
         <Card.Body>
           <Card.Title>{username}</Card.Title>
           <Card.Text>{instruments.map((elm) => getInstruments(elm))}</Card.Text>
-          <Link className="btn btn-outline-dark" to={`/user/profile/${_id}`}>
+          <Link className="btn btn-light " to={`/user/profile/${_id}`}>
             Detalles
           </Link>
           {isFriend ? (
+
             <Form onSubmit={handleDeleteFriend}>
-              <Button variant="outline-danger" type="submit">
+              <Button variant="danger" type="submit">
                 Eliminar amigo
               </Button>{" "}
             </Form>
           ) : (
             <Form onSubmit={handleAddFriend}>
-              <Button variant="outline-success" type="submit">
+              <Button variant="success" type="submit">
                 Añadir como amigo
               </Button>{" "}
             </Form>
+
           )}
         </Card.Body>
       </Card>

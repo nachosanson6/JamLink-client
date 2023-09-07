@@ -1,6 +1,6 @@
-/* .userIcon {
-    background-color: red;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-} */
+.enlarge-on-hover:hover {
+    transform: scale(1.1);
+    /* Puedes ajustar el valor de escala según tu preferencia */
+    transition: transform 0.3s ease;
+    /* Agrega una transición suave para la animación */
+}

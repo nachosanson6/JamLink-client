@@ -3,7 +3,6 @@ import { Link, useNavigate, useParams } from "react-router-dom"
 import eventsservice from "../../services/events.services"
 import { useContext, useEffect, useState } from "react"
 import SpinnerComponent from "../../components/Spinner/Spinner"
-import SalaelSol from "../../assets/images/SalaelSol.png"
 import Mapper from "../../components/GoogleMap/GoogleMap"
 import JoinForm from "../../components/JoinForm/JoinForm"
 import AttendeeCard from "../../components/AttendeeCard/AttendeeCard"
@@ -12,7 +11,7 @@ import { formatDate, formatTime } from "../../Utils/date.util"
 import FriendsAvatar from "../../components/FriendsAvatar/FriendsAvatar.util"
 import CommentForm from "../../components/CommentForm/CommentForm"
 import CommentCard from "../../components/CommentCard/CommentCard"
-
+import './EventDetailsPage.css'
 
 const EventsDetailsPage = () => {
 
@@ -65,7 +64,7 @@ const EventsDetailsPage = () => {
 
       <Container className=" align-items-center justify-content-center mt-3 mb-5" >
 
-        <Card style={{ border: "2px solid black" }}>
+        <Card bg="transparent" style={{ border: "2px solid black" }}>
 
           <div style={{
             width: "100%",
@@ -77,9 +76,9 @@ const EventsDetailsPage = () => {
             backgroundSize: "cover",
           }} >
 
-          </div>
+          </div >
           {/* <Card.Img variant="top" style={{ height: '40rem', width: '100%' }} src={SalaelSol} /> */}
-          <Card.Body>
+          <Card.Body className="eventDetails" >
             <Row>
               <Col md={6} >
                 <Card.Title className="d-flex align-items-center justify-content-center">
@@ -91,20 +90,20 @@ const EventsDetailsPage = () => {
                 <Card.Text className="d-flex align-items-center justify-content-center">
                   {eventInformation.address}
                 </Card.Text>
-                <Card.Subtitle className="mb-2 text-muted">
+                <Card.Subtitle className="mb-2">
                   <b>Fecha:</b> {formattedDate} <b>Hora de inicio:</b> {formattedTime}</Card.Subtitle>
                 <p>Creado por:</p>
                 <FriendsAvatar friendId={eventInformation.owner} />
                 <p>Asistirán al evento:</p>
-                <Row className="d-flex">
+                <Row className="d-flex ">
                   {eventInformation.attendees.map((elm) => <AttendeeCard key={elm._id} attendee={elm} />)}
                 </Row>
 
                 <div className="mt-3">
                   {usersJoined.includes(loggedUser._id) ?
-                    <Button variant="outline-danger" onClick={() => { withdrawEvent(); setIsJoined(!isJoined) }}>Desapuntarse</Button>
+                    <Button variant="danger" onClick={() => { withdrawEvent(); setIsJoined(!isJoined) }}>Desapuntarse</Button>
                     :
-                    <Button variant="outline-success" onClick={() => setShowModal(true)}>Unirte</Button>
+                    <Button variant="success" onClick={() => setShowModal(true)}>Unirte</Button>
                   }
 
                   {ownEvent && (
@@ -116,9 +115,9 @@ const EventsDetailsPage = () => {
                     </>
                   )}
 
-                  <CommentForm event_id={eventInformation._id} />
+                  <CommentForm event_id={eventInformation._id} loadEventDetails={loadEventDetails} />
                   {
-                    eventInformation.comments.map(elm => <CommentCard comment_id={elm} event_id={eventInformation._id} />)
+                    eventInformation.comments.map(elm => <CommentCard comment_id={elm} loadEventDetails={loadEventDetails} event_id={eventInformation._id} />)
 
                   }
 

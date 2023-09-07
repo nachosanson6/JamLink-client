@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom"
 
 
 
-const CommentForm = ({ event_id }) => {
+const CommentForm = ({ event_id, loadEventDetails }) => {
 
     const navigate = useNavigate()
 
@@ -25,7 +25,10 @@ const CommentForm = ({ event_id }) => {
 
         commentsservice
             .addComment(event_id, commentDataForm)
-            .then(() => navigate(`/events`))
+            .then(() => {
+                loadEventDetails()
+                setCommentDataForm({ comments: "" })
+            })
             .catch(err => console.log(err))
     }
 
@@ -38,7 +41,7 @@ const CommentForm = ({ event_id }) => {
             </Form.Group>
 
 
-            <Button variant="outline-dark" type="submit">
+            <Button variant="dark" type="submit">
                 Añadir comentario
             </Button>
         </Form>
