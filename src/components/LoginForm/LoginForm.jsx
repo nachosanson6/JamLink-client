@@ -43,12 +43,12 @@ const LoginForm = ({ fireFinalActions }) => {
 
         <Form onSubmit={handleSubmit}>
 
-            <Form.Group className="mb-3" controlId="email">
+            <Form.Group className="mb-3 fs-4" controlId="email">
                 <Form.Label>Email</Form.Label>
                 <Form.Control type="email" value={loginData.email} onChange={handleInputChange} name="email" />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="password">
+            <Form.Group className="mb-3 fs-4" controlId="password">
                 <Form.Label>Contraseña</Form.Label>
                 <Form.Control type={type} value={loginData.password} onChange={handleInputChange} name="password" id="myInput" />
                 <input type="checkbox" onClick={handleToggle} />Mostrar contraseña

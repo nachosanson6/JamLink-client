@@ -11,15 +11,16 @@ const App = () => {
 
   return (
 
-    <div className={`App ${theme}`}>
-
+    // <div className={`App ${theme}`}>
+      <>
       <Navigation />
 
       <AppRoutes />
 
       <Footer />
+      </>
 
-    </div >
+    // </div >
   )
 }
 

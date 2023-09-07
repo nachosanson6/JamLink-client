@@ -52,7 +52,7 @@ const UserDetails = ({ userInformation }) => {
       </div>
       <hr />
 
-      {isCurrentUser && (
+      {(isCurrentUser || loggedUser.role === 'ADMIN') && (
         <>
           <Link to={`/user/edit/${userInformation.id}`}>
             <Button variant="outline-success">Editar</Button>{" "}

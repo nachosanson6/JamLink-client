@@ -47,7 +47,7 @@ const Navigation = () => {
             </Link>
           </Navbar.Brand>
 
-          <Nav className="me-auto">
+          <Nav className="me-auto fs-3">
             <Link to={"/events"} className="nav-link">
               Eventos
             </Link>
@@ -59,8 +59,8 @@ const Navigation = () => {
             )}
           </Nav>
           <div className="d-flex" style={{ marginRight: "30px" }}>
-            <Button variant="outline-primary" onClick={switchTheme}>
-              Tema {theme === "dark" ? "oscuro" : "claro"}
+            <Button variant="outline-primary" className="fs-3" onClick={switchTheme}>
+             Tema {theme === "dark" ? "oscuro" : "claro"} 
             </Button>
           </div>
 
@@ -96,11 +96,11 @@ const Navigation = () => {
             >
               {!loggedUser && (
                 <>
-                  <Link to={"/signup"} className="nav-link">
+                  <Link to={"/signup"} className="nav-link fs-5" >
                     Registro
                   </Link>
                   <hr />
-                  <Button variant="dark" onClick={() => setShowModal(true)}>
+                  <Button variant="dark" className="fs-5" onClick={() => setShowModal(true)}>
                     Iniciar Sesión
                   </Button>
                 </>
@@ -110,12 +110,13 @@ const Navigation = () => {
                 <>
                   <Link
                     to={`/user/profile/${loggedUser._id}`}
-                    className="nav-link"
+                    className="nav-link fs-5"
                   >
                     Mi perfil{" "}
                   </Link>
                   <hr />
-                  <Link className="nav-link" onClick={logout}>
+                  <Link className="nav-link fs-5" 
+                   onClick={logout}>
                     Cerrar sesión
                   </Link>
                 </>
@@ -127,7 +128,7 @@ const Navigation = () => {
 
       <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
-          <Modal.Title>Acceso</Modal.Title>
+          <Modal.Title className="fs-2">Acceso</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <LoginForm fireFinalActions={fireFinalActions} />

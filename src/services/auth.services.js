@@ -22,7 +22,7 @@ class AuthService {
     signup(userData) {
         return this.api.post('/signup', userData)
     }
-
+    
     login(userData) {
         return this.api.post('/login', userData)
     }
