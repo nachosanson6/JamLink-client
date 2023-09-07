@@ -20,13 +20,13 @@ class Commentsservice {
     }
 
     addComment(event_id, commentDataForm) {
-        console.log(event_id)
-        console.log(commentDataForm)
+
         return this.api.post(`/addComment/${event_id}`, commentDataForm)
     }
 
-    getEventComments(event_id) {
-        return this.api.get(`/getEventComments/${event_id}`)
+    getCommentData(comment_id) {
+
+        return this.api.get(`/getCommentData/${comment_id}`)
     }
 
     editComment(comment_id, commentDataForm) {
@@ -35,7 +35,8 @@ class Commentsservice {
     }
 
     deleteComment(event_id, comment_id) {
-        return this.api.post(`/deleteComment/${event_id}`)
+        console.log(event_id, comment_id)
+        return this.api.post(`/deleteComment/${event_id}`, { comment_id })
     }
 }
 

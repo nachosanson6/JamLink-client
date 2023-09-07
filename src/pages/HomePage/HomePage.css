@@ -1,0 +1,14 @@
+body {
+    justify-content: center;
+    padding-bottom: 50px;
+}
+
+.homepage {
+    text-align: center;
+}
+
+.homepage img {
+    width: 50%;
+    margin-top: -35px;
+
+}

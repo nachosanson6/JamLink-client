@@ -1,6 +1,12 @@
 body {
     font-family: sans-serif;
     font-weight: 100;
+    background-image: url('./assets/images/20815-musica.jpg');
+    background-position-x: 90px;
+    background-position-y: 20px;
+    background-size: cover;
+
+
 
 }
 

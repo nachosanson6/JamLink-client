@@ -1,5 +1,22 @@
+body {
+    padding-bottom: 50px;
+
+}
+
 .userImg {
     width: 30%;
     border: 1px solid;
     border-radius: 10%;
+}
+
+.custom-card {
+    height: 1000px;
+    /* Ajusta la altura deseada */
+    overflow: hidden;
+}
+
+.custom-card .card-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
