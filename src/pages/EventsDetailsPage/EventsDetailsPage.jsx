@@ -10,6 +10,8 @@ import AttendeeCard from "../../components/AttendeeCard/AttendeeCard"
 import { AuthContext } from "../../contexts/auth.context"
 import { formatDate, formatTime } from "../../Utils/date.util"
 import FriendsAvatar from "../../components/FriendsAvatar/FriendsAvatar.util"
+import CommentForm from "../../components/CommentForm/CommentForm"
+import CommentCard from "../../components/CommentCard/CommentCard"
 
 
 const EventsDetailsPage = () => {
@@ -56,7 +58,6 @@ const EventsDetailsPage = () => {
   const ownEvent = eventInformation.owner === loggedUser._id
   const formattedDate = formatDate(new Date(eventInformation.date))
   const formattedTime = formatTime(new Date(eventInformation.date))
-
 
   return (
 
@@ -115,10 +116,14 @@ const EventsDetailsPage = () => {
                     </>
                   )}
 
+                  <CommentCard />
+
+                  <CommentForm event_id={eventInformation._id} />
+
                 </div>
               </Col>
               <Col className="ms-3">
-                <Mapper location={[eventInformation.location]} label={eventInformation.title} />
+                <Mapper location={[eventInformation.location]} label={[eventInformation.title]} />
               </Col>
             </Row >
           </Card.Body>
