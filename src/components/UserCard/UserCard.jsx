@@ -38,7 +38,7 @@ const UserCard = ({ _id, username, avatar, instruments, loadUsers }) => {
 
   return (
     <Col lg={{ span: 3 }} md={{ span: 6 }}>
-      <Card style={{ border: "2px solid black" }}>
+      <Card className="custom-card" style={{ border: "2px solid black" }}>
         <Card.Img variant="top" className="userImg" src={avatar} />
         <Card.Body>
           <Card.Title>{username}</Card.Title>

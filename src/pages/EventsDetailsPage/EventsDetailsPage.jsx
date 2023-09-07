@@ -116,9 +116,11 @@ const EventsDetailsPage = () => {
                     </>
                   )}
 
-                  <CommentCard />
-
                   <CommentForm event_id={eventInformation._id} />
+                  {
+                    eventInformation.comments.map(elm => <CommentCard comment_id={elm} event_id={eventInformation._id} />)
+
+                  }
 
                 </div>
               </Col>

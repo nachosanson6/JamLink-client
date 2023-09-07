@@ -49,7 +49,7 @@ const Mapper = ({ location, label }) => {
         <GoogleMap
             mapContainerStyle={containerStyle}
             center={center}
-            zoom={10}
+            zoom={12}
 
 
 

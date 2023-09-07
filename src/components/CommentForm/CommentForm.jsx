@@ -25,7 +25,7 @@ const CommentForm = ({ event_id }) => {
 
         commentsservice
             .addComment(event_id, commentDataForm)
-            .then(() => navigate('/events'))
+            .then(() => navigate(`/events`))
             .catch(err => console.log(err))
     }
 

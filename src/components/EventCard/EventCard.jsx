@@ -1,6 +1,7 @@
 import { Card } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import { formatDate, formatTime } from "../../Utils/date.util"
+import FriendsAvatar from "../FriendsAvatar/FriendsAvatar.util"
 
 
 const EventCard = ({ title, description, date, owner, _id }) => {
@@ -13,10 +14,11 @@ const EventCard = ({ title, description, date, owner, _id }) => {
     <Card>
       <Card.Body>
         <Card.Title>{title}</Card.Title>
+        <hr />
         <Card.Subtitle className="mb-2 text-muted">
           <b>Fecha:</b> {formattedDate} <b>Hora de inicio:</b> {formattedTime}</Card.Subtitle>
-        <Card.Text>{description}</Card.Text>
-        <p>{owner}</p>
+        <p>Creado por:</p>
+        <FriendsAvatar friendId={owner} />
         <Link className="btn btn-outline-warning" to={`/events/details/${_id}`}>
           Detalles
         </Link>

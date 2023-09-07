@@ -7,7 +7,7 @@ const CommunityPage = () => {
     return (
 
         <Container>
-            <h1>LISTADO DE USERS</h1>
+            <h1>Nuestros usuarios</h1>
             <UserList />
         </Container>
     )
