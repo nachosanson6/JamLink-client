@@ -3,7 +3,7 @@ import eventsservice from '../../services/events.services'
 import { useContext, useEffect, useState } from 'react'
 import Mapper from '../../components/GoogleMap/GoogleMap'
 import SpinnerComponent from '../../components/Spinner/Spinner'
-import logoDark from './../../assets/images/logodark.png'
+import logoDark from './../../assets/images/logoDark.png'
 
 import './../HomePage/HomePage.css'
 import { ThemeContext } from '../../contexts/theme.context'
