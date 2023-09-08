@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
 import SpinnerComponent from '../Spinner/Spinner';
-import './marker.css'
-import marker from './../../assets/images/marker.png'
+import './marker.css';
+import marker from './../../assets/images/marker.png';
 import mapStyle from '../../utils/mapStyle';
 
 
@@ -10,7 +10,7 @@ import mapStyle from '../../utils/mapStyle';
 const Mapper = ({ location, label }) => {
 
     const containerStyle = {
-        // width: '440px',
+
         height: '500px'
     };
 
