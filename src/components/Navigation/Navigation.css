@@ -1,6 +1,6 @@
-.enlarge-on-hover:hover {
+.enlarge-on-hovers:hover {
     transform: scale(1.1);
-    /* Puedes ajustar el valor de escala según tu preferencia */
-    transition: transform 0.3s ease;
-    /* Agrega una transición suave para la animación */
+
+    transition: transform 0.5s ease;
+
 }

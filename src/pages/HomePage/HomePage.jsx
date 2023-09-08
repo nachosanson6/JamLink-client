@@ -41,7 +41,7 @@ const HomePage = () => {
                     <SpinnerComponent />
 
                     :
-                    <div className='homepage align-items-center'>
+                    <div className='homepage align-items-center mb-5'>
                         <img src={logoDark} />
                         <Mapper location={allLocation} label={markerLabel} />
                     </div>

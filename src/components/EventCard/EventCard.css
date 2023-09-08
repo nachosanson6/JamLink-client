@@ -1,17 +1,28 @@
 .events {
-    padding-bottom: 50px;
-    color: white !important;
+    color: rgb(252, 250, 250) !important;
     background-color: #7b0c1594 !important;
     box-shadow: 3px 1px 10px 1px rgb(255, 255, 255);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-
-
+    width: calc(100%);
+    margin: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
 }
 
 .custom-card .card-text {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+.enlarge-on-hover:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+.card-text {
+    white-space: normal;
 }

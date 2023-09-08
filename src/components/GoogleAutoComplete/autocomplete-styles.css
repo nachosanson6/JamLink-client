@@ -1,0 +1,8 @@
+body .pac-item {
+    color: black !important;
+    background-color: black !important;
+}
+
+body .pac-item:hover {
+    background-color: #e0e0e0;
+}

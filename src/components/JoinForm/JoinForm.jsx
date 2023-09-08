@@ -4,6 +4,7 @@ import { Button } from "react-bootstrap"
 import { AuthContext } from "../../contexts/auth.context"
 import { useNavigate, useParams } from "react-router-dom"
 import eventsservice from "../../services/events.services"
+import './JoinForm.css'
 
 const JoinForm = ({ setIsJoined, isJoined, setShowModal }) => {
 
@@ -26,10 +27,10 @@ const JoinForm = ({ setIsJoined, isJoined, setShowModal }) => {
     }
 
     return (
-        <>
+        <div className="instrumentsSelection">
             <InstrumentsForm signupData={signupData} setSignupData={setSignupData} />
             <Button variant="outline-success" onClick={joinEvent}>Únete!</Button>
-        </>
+        </div>
     )
 }
 

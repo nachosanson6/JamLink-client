@@ -14,6 +14,10 @@ const Mapper = ({ location, label }) => {
         height: '500px'
     };
 
+    if (!location) {
+        return <SpinnerComponent />
+    }
+
     const markerCenter = location.map(elm => {
         return { lat: elm.coordinates[1], lng: elm.coordinates[0] }
     })
@@ -22,21 +26,10 @@ const Mapper = ({ location, label }) => {
         return elm
     })
 
-
-
-
-
-
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',
-        googleMapsApiKey: "AIzaSyCIkt_MWj32EbnKrxghvdDSFRzxDfC4uMs"
+        googleMapsApiKey: import.meta.env.VITE_APP_GOOGLE
     })
-
-
-
-    if (!location) {
-        return <SpinnerComponent />
-    }
 
     const center = {
         lat: location[0].coordinates[1],

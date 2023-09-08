@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
-import Geocode from "react-geocode"
+import Geocode from "react-geocode";
+import "./autocomplete-styles.css";
 
 const Autocomplete = ({ eventData, setEventData }) => {
 
     const [place, setPLace] = useState()
+
+    const itemStyle = {
+        color: "black",
+    };
 
     Geocode.setApiKey("AIzaSyCIkt_MWj32EbnKrxghvdDSFRzxDfC4uMs")
 
@@ -22,13 +27,15 @@ const Autocomplete = ({ eventData, setEventData }) => {
 
     return (
 
-        <div>
+        <div style={{ color: "black" }}>
             <GooglePlacesAutocomplete
                 selectProps={{
                     place,
                     onChange: setPLace,
+
                 }}
                 apiKey="AIzaSyCIkt_MWj32EbnKrxghvdDSFRzxDfC4uMs"
+
             />
         </div>
     )

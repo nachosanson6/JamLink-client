@@ -84,13 +84,14 @@ const EventsDetailsPage = () => {
                 <Card.Title className="d-flex align-items-center justify-content-center">
                   {eventInformation.title}
                 </Card.Title>
+                <hr />
                 <Card.Text className="d-flex align-items-center justify-content-center">
                   {eventInformation.description}
                 </Card.Text>
-                <Card.Text className="d-flex align-items-center justify-content-center">
+                <Card.Text className="d-flex align-items-center justify-content-center mt-4">
                   {eventInformation.address}
                 </Card.Text>
-                <Card.Subtitle className="mb-2">
+                <Card.Subtitle className="mb-2 mt-4">
                   <b>Fecha:</b> {formattedDate} <b>Hora de inicio:</b> {formattedTime}</Card.Subtitle>
                 <p>Creado por:</p>
                 <FriendsAvatar friendId={eventInformation.owner} />
@@ -132,7 +133,7 @@ const EventsDetailsPage = () => {
 
         <Modal show={showModal} onHide={() => setShowModal(false)}>
           <Modal.Header closeButton>
-            <Modal.Title>Elige tus instrumentos</Modal.Title>
+            <Modal.Title className="joinModal">Elige tus instrumentos</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <JoinForm setShowModal={setShowModal} isJoined={isJoined} setIsJoined={setIsJoined} />

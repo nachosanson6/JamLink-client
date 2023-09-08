@@ -37,7 +37,7 @@ const Navigation = () => {
         >
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Navbar.Brand className="ms-10" style={{ padding: 0, marginLeft: 70 }}>
+            <Navbar.Brand className="ms-10 enlarge-on-hover" style={{ padding: 0, marginLeft: 70 }}>
               <Link to={"/"} className="nav-link">
                 <img
                   alt=""
@@ -50,14 +50,14 @@ const Navigation = () => {
             </Navbar.Brand>
 
             <Nav className="me-auto fs-4  ">
-              <div className="enlarge-on-hovers">
-                <Link to={"/events"} className="nav-link">
-                  Eventos
-                </Link>
-              </div>
+
+              <Link to={"/events"} className="nav-link enlarge-on-hovers">
+                Jam Sesions
+              </Link>
+
               {loggedUser && (
 
-                <Link to={"/user/community"} className="nav-link">
+                <Link to={"/user/community"} className="nav-link enlarge-on-hovers ms-3">
                   Comunidad
                 </Link>
 

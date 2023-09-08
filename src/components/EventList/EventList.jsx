@@ -3,6 +3,7 @@ import EventCard from "../EventCard/EventCard"
 import SpinnerComponent from "../Spinner/Spinner"
 import { useEffect, useState } from "react"
 import eventsservice from "../../services/events.services"
+import './EventList.css'
 
 const EventsList = () => {
 
@@ -29,7 +30,7 @@ const EventsList = () => {
         !events ?
             <SpinnerComponent />
             :
-            <Row className="mt-5">
+            <Row className="cardsContainer">
                 {
                     events.map(elm => {
                         return (

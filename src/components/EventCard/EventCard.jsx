@@ -12,8 +12,8 @@ const EventCard = ({ title, description, date, owner, _id }) => {
   return (
 
     <Card bg="transparent">
-      <Card.Body className="events">
-        <Card.Title>{title}</Card.Title>
+      <Card.Body className="events enlarge-on-hover">
+        <Card.Title className="card-text">{title}</Card.Title>
         <hr />
         <Card.Subtitle className="mb-2">
           <b>Fecha:</b> {formattedDate}
