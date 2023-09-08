@@ -3,7 +3,6 @@ import { Form, Button } from "react-bootstrap";
 import authService from "./../../services/auth.services";
 import uploadServices from "../../services/upload.services";
 import { useNavigate } from "react-router-dom"
-import { getUpdatedInstruments } from "../../utils/instruments.util";
 import { AuthContext } from "../../contexts/auth.context";
 import userservice from "../../services/user.service";
 import InstrumentsForm from "../InstrumentsForm/InstrumentsForm";

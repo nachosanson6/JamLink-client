@@ -1,6 +1,6 @@
 import { Card } from "react-bootstrap"
 import { Link } from "react-router-dom"
-import { formatDate, formatTime } from "../../Utils/date.util"
+import { formatDate, formatTime } from "../../utils/date.util"
 import FriendsAvatar from "../FriendsAvatar/FriendsAvatar.util"
 import './EventCard.css'
 

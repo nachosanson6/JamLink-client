@@ -3,7 +3,7 @@ import { Card, Button, Row, Col } from "react-bootstrap"
 import commentsservice from "../../services/comments.services"
 import SpinnerComponent from "../Spinner/Spinner"
 import { useNavigate } from "react-router-dom"
-import { formatDate, formatTime } from "../../Utils/date.util"
+import { formatDate, formatTime } from "../../utils/date.util"
 import FriendsAvatar from "../FriendsAvatar/FriendsAvatar.util"
 import './CommentCard.css'
 
