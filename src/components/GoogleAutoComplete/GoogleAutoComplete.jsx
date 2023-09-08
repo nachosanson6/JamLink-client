@@ -11,7 +11,7 @@ const Autocomplete = ({ eventData, setEventData }) => {
         color: "black",
     };
 
-    Geocode.setApiKey("AIzaSyCIkt_MWj32EbnKrxghvdDSFRzxDfC4uMs")
+    Geocode.setApiKey(import.meta.env.VITE_APP_GOOGLE_KEY)
 
     place && Geocode
         .fromAddress(place.label)
@@ -34,7 +34,7 @@ const Autocomplete = ({ eventData, setEventData }) => {
                     onChange: setPLace,
 
                 }}
-                apiKey="AIzaSyCIkt_MWj32EbnKrxghvdDSFRzxDfC4uMs"
+                apiKey={import.meta.env.VITE_APP_GOOGLE_KEY}
 
             />
         </div>

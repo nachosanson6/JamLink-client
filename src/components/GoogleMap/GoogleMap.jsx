@@ -28,7 +28,7 @@ const Mapper = ({ location, label }) => {
 
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',
-        googleMapsApiKey: import.meta.env.VITE_APP_GOOGLE
+        googleMapsApiKey: import.meta.env.VITE_APP_GOOGLE_KEY
     })
 
     const center = {
