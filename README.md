@@ -121,12 +121,6 @@ The file structure in the Jamlink front-end is organized as follows:
   - [Bootstrap](https://getbootstrap.com/) - CSS framework for fast and responsive web development.
   - [Google Autocomplete](https://developers.google.com/maps/documentation/javascript/places-autocomplete) - Google Maps Autocomplete component.
 
-- **Back-end:**
-  - [Express](https://expressjs.com/) - Web framework for Node.js used on the server.
-  - [Node.js](https://nodejs.org/) - Runtime environment for JavaScript on the server side.
-  - [MongoDB](https://www.mongodb.com/) - NoSQL database used for data storage.
-  - [Axios](https://axios-http.com/) - Promise-based HTTP client for the browser and Node.js.
-
 - **Tools and Utilities:**
   - [GitHub Actions](https://github.com/features/actions) - For continuous integration and automatic deployment.
 
