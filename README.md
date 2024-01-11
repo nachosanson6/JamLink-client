@@ -17,10 +17,9 @@ Jamlink is a web application created during the Ironhack bootcamp, providing a s
 1. [Setup](#setup)
     - [Scripts](#scripts)
     - [Environment variables](#environment-variables)
-2. [Development Run](#development-run-front)
-3. [File Structure](#file-structure)
-4. [Used Technologies](#used-technologies)
-5. [Client routes](#client-routes)
+2. [File Structure](#file-structure)
+3. [Used Technologies](#used-technologies)
+4. [Client routes](#client-routes)
 
 
 ## Setup
