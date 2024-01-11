@@ -12,6 +12,8 @@
 4. [File Structure](#file-structure)
 5. [Used Technologies](#used-technologies)
 6. [Client routes](#client-routes)
+
+[![Back-end Repository](https://img.shields.io/badge/Back--end-Repository-blue?style=for-the-badge&logo=github)](https://github.com/nachosanson6/JamLink-server)
  
 ## Description
 
