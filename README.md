@@ -1,5 +1,20 @@
 # Jamlink
 
+## Front-end Repository (React with Vite)
+
+### Table of Contents
+
+1. [Table of Contents](#table-of-contents)
+2. [Description](#description)
+3. [Setup](#setup)
+    - [Scripts](#scripts)
+    - [Environment variables](#environment-variables)
+4. [File Structure](#file-structure)
+5. [Used Technologies](#used-technologies)
+6. [Client routes](#client-routes)
+ 
+## Description
+
 Jamlink is a web application created during the Ironhack bootcamp, providing a social platform for musicians. The application aims to connect musicians who want to organize and participate in jam sessions. Some key features of Jamlink include:
 
 - **Musician Profile:** Create and customize your musical profile, showcasing your instruments, skills, and preferences.
@@ -8,19 +23,6 @@ Jamlink is a web application created during the Ironhack bootcamp, providing a s
 - **Event Participation:** Join jam session events organized by other musicians, indicating the instrument you'd like to play.
 - **Friends List:** Build a list of musical friends with whom you can interact, collaborate, and organize private jam sessions.
 - **Comment Interaction:** Leave comments on events and profiles of other musicians to encourage communication and collaboration.
-
-
-## Front-end Repository (React with Vite)
-
-### Table of Contents (Front-end)
-
-1. [Setup](#setup)
-    - [Scripts](#scripts)
-    - [Environment variables](#environment-variables)
-2. [File Structure](#file-structure)
-3. [Used Technologies](#used-technologies)
-4. [Client routes](#client-routes)
-
 
 ## Setup
 
