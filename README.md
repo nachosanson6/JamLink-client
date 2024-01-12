@@ -12,6 +12,8 @@
 4. [File Structure](#file-structure)
 5. [Used Technologies](#used-technologies)
 6. [Client routes](#client-routes)
+7. [License](#license)
+8. [Contact](#contact)
 
 [![Back-end Repository](https://img.shields.io/badge/Back--end-Repository-blue?style=for-the-badge&logo=github)](https://github.com/nachosanson6/JamLink-server)
  
@@ -140,3 +142,30 @@ The file structure in the Jamlink front-end is organized as follows:
 | /user/profile/:id   | User profile page    | ✔         |
 | /user/community     | User gallery page    | ✔         |
 | /user/edit/:id      | Edit user page       | ✔         |
+
+## License
+
+This project uses various technologies and resources, each with its respective licenses. Below is the license information for the main technologies and tools used in the front-end:
+
+### Front-end
+
+- **React**: [MIT License](https://opensource.org/licenses/MIT)
+- **Vite**: [MIT License](https://opensource.org/licenses/MIT)
+- **HTML**: [HTML License](https://opensource.org/licenses/MIT) (Note: HTML generally doesn't have a specific license)
+- **CSS**: [MIT License](https://opensource.org/licenses/MIT)
+- **JavaScript**: [MIT License](https://opensource.org/licenses/MIT)
+- **Bootstrap**: [MIT License](https://opensource.org/licenses/MIT)
+- **Google Autocomplete**: [Google Maps Platform Terms of Service](https://cloud.google.com/maps-platform/terms)
+
+### Tools and Utilities
+
+- **GitHub Actions**: [GitHub Terms of Service](https://docs.github.com/en/github/site-policy/github-terms-of-service)
+
+
+## Contact
+
+Created by [Nacho Sanson](https://github.com/nachosanson6). 
+
+Contributors:
+
+- [Fernando Gómez](https://github.com/piltrimon86)
